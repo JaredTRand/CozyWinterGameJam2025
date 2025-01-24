@@ -219,7 +219,7 @@ func handle_action():
 			get_tree().root.add_child(newball)
 			newball.global_position = snowball_spawn.global_position
 			newball.global_rotation = snowball_spawn.global_rotation
-			newball.apply_impulse(-HEAD.get_global_transform().basis.z  * 10)
+			newball.apply_impulse((-HEAD.get_global_transform().basis.z  * newball.speed) + velocity)
 
 
 func handle_jumping():

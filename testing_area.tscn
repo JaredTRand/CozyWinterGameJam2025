@@ -35,6 +35,3 @@ snowball = ExtResource("3_eys8i")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Character"]
 transform = Transform3D(0.86362, 0.249869, -0.437865, 0.0377699, 0.834024, 0.550434, 0.502726, -0.491904, 0.710842, 0, 5, 0)
 light_energy = 2.0
-
-[node name="RigidBody3D" parent="." instance=ExtResource("3_eys8i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06588, 4.14146, -2.44489)

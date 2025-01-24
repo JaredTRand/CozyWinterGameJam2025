@@ -377,6 +377,7 @@ libraries = {
 [node name="timers" type="Node3D" parent="."]
 
 [node name="cooldown_throw" type="Timer" parent="timers"]
+wait_time = 0.75
 one_shot = true
 
 [node name="Head" type="Node3D" parent="."]
