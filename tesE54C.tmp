@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://cv6w15l1g2lel"]
+
+[ext_resource type="Texture2D" uid="uid://ty18a3hkxadm" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_l6kca"]
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="2_x77yc"]
+[ext_resource type="PackedScene" uid="uid://cja0hhaaqvm75" path="res://player/snowball/snowball.tscn" id="3_eys8i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umphh"]
+albedo_texture = ExtResource("1_l6kca")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_gxkj2"]
+material = SubResource("StandardMaterial3D_umphh")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_x7oyv"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(26.5041, 0, 0, 0, 0.957199, 0, 0, 0, 31.9046, 0, 0, 0)
+mesh = SubResource("BoxMesh_gxkj2")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(26.6319, 0, 0, 0, 0.961815, 0, 0, 0, 32.0584, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_x7oyv")
+
+[node name="Character" parent="." instance=ExtResource("2_x77yc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07041, 0.718547, -0.262015)
+base_speed = 3.0
+sprint_speed = 6.0
+crouch_speed = 1.0
+acceleration = 10.0
+jump_velocity = 4.5
+mouse_sensitivity = 0.1
+invert_mouse_y = false
+immobile = false
+JUMP = "ui_accept"
+LEFT = "ui_left"
+RIGHT = "ui_right"
+FORWARD = "ui_up"
+BACKWARD = "ui_down"
+PAUSE = "ui_cancel"
+CROUCH = "crouch"
+SPRINT = "sprint"
+MAIN_ACTION = "main_action"
+jumping_enabled = true
+in_air_momentum = true
+motion_smoothing = true
+sprint_enabled = true
+crouch_enabled = true
+crouch_mode = 0
+sprint_mode = 0
+dynamic_fov = true
+continuous_jumping = true
+view_bobbing = true
+jump_animation = true
+pausing_enabled = true
+gravity_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Character"]
+transform = Transform3D(0.86362, 0.249869, -0.437865, 0.0377699, 0.834024, 0.550434, 0.502726, -0.491904, 0.710842, 0, 5, 0)
+light_energy = 2.0
+
+[node name="RigidBody3D" parent="." instance=ExtResource("3_eys8i")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.0234, 5.0843, -4.3934)
