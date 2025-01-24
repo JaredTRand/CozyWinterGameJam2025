@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cja0hhaaqvm75"]
+[gd_scene load_steps=11 format=3 uid="uid://cja0hhaaqvm75"]
 
 [ext_resource type="Script" path="res://player/snowball/snowball.gd" id="1_fa4v3"]
+[ext_resource type="AudioStream" uid="uid://cfwfwf6smldvr" path="res://player/snowball/snowball_hit.ogg" id="3_14ar3"]
 [ext_resource type="Texture2D" uid="uid://dga3vkaa33j8x" path="res://player/snowball/snowball_particle.png" id="3_wn4o1"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_jraq8"]
@@ -61,6 +62,9 @@ explosiveness = 1.0
 randomness = 0.5
 process_material = SubResource("ParticleProcessMaterial_j0eto")
 draw_pass_1 = SubResource("QuadMesh_cxefs")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_14ar3")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="snow_break" to="." method="_on_snow_break_finished"]
