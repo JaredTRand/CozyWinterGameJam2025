@@ -328,10 +328,11 @@ wait_time = 60.0
 one_shot = true
 
 [node name="player_noticed" type="Timer" parent="Timers"]
+wait_time = 0.5
 one_shot = true
 
 [node name="lost_view_of_player" type="Timer" parent="Timers"]
-wait_time = 0.25
+wait_time = 0.2
 one_shot = true
 
 [node name="enemymesh" type="Node3D" parent="."]

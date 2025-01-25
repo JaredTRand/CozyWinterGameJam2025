@@ -39,6 +39,7 @@ const ANIMATION_BLEND : float = 7.0
 @onready var footstep_timer = $"Timers/footstep_timer"
 @onready var wait_in_pos_timer:Timer = $"Timers/wait_in_pos_timer"
 @onready var attack_cooldown:Timer = $"Timers/attack_cooldown_timer"
+@onready var noticed_timer:Timer = $Timers/player_noticed
 
 @onready var nav_bake_finished = false
 
@@ -103,11 +104,12 @@ func _process(_delta):
 	if player_view_state == "DEAD": return
 	if(player_noticed):
 		var can_see = player_in_sight()
+		
 		if not can_see:
 			if(player_view_state == "PURSUING" && player_view_state != "GOINGTOLASTPOS"): # if i cant see ya, but i used to see ya
 				lost_View_of_player()
-		else:
-			$Timers/player_noticed.start()
+		elif noticed_timer.is_stopped():
+			noticed_timer.start()
 	if(player_in_attack_zone and attack_cooldown.is_stopped() and player_in_sight()):
 		switch_state("PURSUING")
 		start_throw()
@@ -233,7 +235,7 @@ func player_in_sight():
 func lost_View_of_player():
 	$Timers/lost_view_of_player.start()
 func _on_lost_view_of_player_timeout() -> void:
-	if not player_in_sight():
+	if not player_in_sight() && previous_player_view_state == "PURSUING":
 		switch_state("GOINGTOLASTPOS")
 		last_player_pos = player_pos
 		wander_pos = last_player_pos
