@@ -5,7 +5,7 @@ extends CharacterBody3D
 @onready var player_view_state:String = "HIDDEN" # HIDDEN, NOTICED
 @onready var previous_player_view_state:String = "HIDDEN" # HIDDEN, NOTICED
 #@onready var billy_status:String = "WANDERING" # WANDERING, PURSUING, SEARCHING, WAITING, NOTICED, GOINGTOLASTPOS
-@onready var navRegion:NavigationRegion3D = $"../NavigationRegion3D"
+@onready var navRegion:NavigationRegion3D = get_tree().get_nodes_in_group("nav")[0]
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 
 @export var SPEED:float
@@ -61,38 +61,7 @@ func _physics_process(delta):
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("SPEED", SPEED)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("last_player_pos", last_player_pos)
 
-	if not nav_bake_finished:
-		print_debug("NAV MESH NOT BAKED, ENEMIES CANNOT MOVE") 
 
-	# if(player_view_state == "THROWING"):
-	# 	return
-	# elif(player_view_state == "WAITING"):
-	# 	pass
-	# 	# animation_player.play("IDLELONG")
-	# elif(cur_speed == RUN_SPEED):
-	# 	pass # run animation
-	# 	# animation_player.play("RUN")
-	# 	# play_sound(load("res://Enemies/Billy/sounds/monsterbreathingrun.mp3"), [-3, -5], [1, 2.5])
-	# elif(cur_speed == SPEED):
-	# 	pass #walk
-	# 	# animation_player.play("WALK1")
-	# 	sound_maker.stop()
-		
-	# if footstep_timer.is_stopped() and player_view_state == "PURSUING" or player_view_state == "WANDERING" or player_view_state == "NOTICED" or player_view_state == "GOINGTOLASTPOS":
-	# 	# play_footstep_sound(load("res://Enemies/Billy/sounds/thud.wav"), [-4, -5], [-1, -2.5])
-	# 	if cur_speed == RUN_SPEED:
-	# 		footstep_timer.start(.3)
-	# 	else:
-	# 		footstep_timer.start(.5)
-		
-	# if(player_view_state == "NOTICED"):
-	# 	if(!player_noticed): return
-	# 	if(previous_player_view_state == "PURSUING"):
-	# 		cur_speed = RUN_SPEED
-	# 	else:
-	# 		cur_speed = SPEED
-	# 	move_to_player(delta)
-	# el
 	if(player_view_state == "GOINGTOLASTPOS"):
 		if(previous_player_view_state == "PURSUING"):
 			cur_speed = RUN_SPEED
@@ -100,9 +69,6 @@ func _physics_process(delta):
 			cur_speed = SPEED
 		cur_speed = RUN_SPEED
 		
-		# if(abs(wander_pos.x - global_transform.origin.x) < 0.1 and abs(wander_pos.z - global_transform.origin.z) < 0.1): #if timer stopped or at pos, get new pos
-		# 	SHOUT()
-		# else:
 		wander(delta)
 	elif(player_view_state == "PURSUING"): #
 		# if(!player_in_view): return
@@ -123,19 +89,27 @@ func _physics_process(delta):
 			wander(delta)
 
 func _process(_delta):
-	if(player_in_attack_zone && attack_cooldown.is_stopped()):
-		throw_snowball()
-		switch_state("ATTACKING")
 	if(player_noticed):
 		check_if_player_in_sight()
+	if(player_in_attack_zone and attack_cooldown.is_stopped() and is_player_in_sight()):
+		throw_snowball()
+		switch_state("ATTACKING")
+
 
 func throw_snowball():
-	pass
+	if attack_cooldown.is_stopped():
+		attack_cooldown.start()
+		if snowball.can_instantiate():
+			var newball:RigidBody3D = snowball.instantiate()
+			get_tree().root.add_child(newball)
+			newball.global_position = snowball_spawn.global_position
+			newball.global_rotation = snowball_spawn.global_rotation
+			newball.apply_impulse((-face_dir.get_global_transform().basis.z  * newball.speed) + velocity)
 
 ### MOVEMENT METHODS ########################################################################################
 func update_target_loc(target_loc):
 	player_pos = target_loc
-func bake_finished():
+func bake_finished(nav):
 	nav_bake_finished = true
 
 func set_rand_wander_pos():
@@ -203,6 +177,23 @@ func check_if_player_in_sight():
 			
 		# PLAYER.get_node("UserInterface/DebugPanel").add_property("Can enemy see you", canseeya)
 		# PLAYER.get_node("UserInterface/DebugPanel").add_property("behind wall? ", !can_see)
+
+func is_player_in_sight():
+	var direction = global_position.direction_to( player_pos )
+	var facing = (global_transform.basis.tdotz(direction)) * -1
+	
+	vision_cast.look_at(player_pos)
+	vision_cast2.look_at(player_pos)
+	vision_cast3.look_at(player_pos)
+	var can_see = (vision_cast.get_collider() && vision_cast.get_collider().is_in_group("player")) || (vision_cast2.get_collider() && vision_cast2.get_collider().is_in_group("player")) || (vision_cast3.get_collider() && vision_cast3.get_collider().is_in_group("player"))
+	
+	if(!can_see): # if i cant see ya, i cant see ya.
+		if(player_view_state == "PURSUING" && player_view_state != "GOINGTOLASTPOS" && player_view_state != "SHOUT"): # if i cant see ya, but i used to see ya
+			return false
+	elif(facing > ENEMY_FOV && can_see): #if ya in my fov and i can see ya
+		if(player_noticed):
+			return true
+	return false
 		
 func lost_View_of_player():
 	switch_state("GOINGTOLASTPOS")

@@ -19,10 +19,6 @@ config/icon="res://icon.svg"
 
 enabled=PackedStringArray()
 
-[global_group]
-
-enemy=""
-
 [input]
 
 ui_accept={
