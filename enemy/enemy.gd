@@ -32,6 +32,9 @@ var player_in_attack_zone:bool
 @onready var sound_maker = $sound_maker
 @onready var footstep_sound = $footstep_sound
 
+@onready var animator : AnimationTree = $"enemymesh/AnimationTree"
+const ANIMATION_BLEND : float = 7.0
+
 #timers
 @onready var footstep_timer = $"Timers/footstep_timer"
 @onready var wait_in_pos_timer:Timer = $"Timers/wait_in_pos_timer"
@@ -44,6 +47,7 @@ var player_in_attack_zone:bool
 @onready var snowball_spawn:Node3D = $snowball_spawn
 
 @onready var PLAYER = get_tree().get_nodes_in_group("player")[0]
+
 
 @onready var enemy_hurt_sounds = [load("res://enemy/sounds/oof1.wav"), load("res://enemy/sounds/oof2.wav"), load("res://enemy/sounds/oof3.wav"), load("res://enemy/sounds/oof4.wav"), load("res://enemy/sounds/oof5.wav"), load("res://enemy/sounds/oof6.wav"), load("res://enemy/sounds/oof7.wav")]
 
@@ -61,10 +65,13 @@ func _physics_process(delta):
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Enemy State", player_view_state)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("player_noticed", player_noticed)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("player_in_attack_zone", player_in_attack_zone)
-	PLAYER.get_node("UserInterface/DebugPanel").add_property("SPEED", SPEED)
+	PLAYER.get_node("UserInterface/DebugPanel").add_property("SPEED", cur_speed)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("last_player_pos", last_player_pos)
 
+	if player_view_state == "DEAD": return
 
+	animate(delta)
+	
 	if(player_view_state == "GOINGTOLASTPOS"):
 		if(previous_player_view_state == "PURSUING"):
 			cur_speed = RUN_SPEED
@@ -73,6 +80,7 @@ func _physics_process(delta):
 		cur_speed = RUN_SPEED
 		
 		wander(delta)
+		
 	elif(player_view_state == "PURSUING"): #
 		# if(!player_in_view): return
 		cur_speed = RUN_SPEED
@@ -90,11 +98,18 @@ func _physics_process(delta):
 			wait_in_pos_timer.start(rng.randf_range(1.0, 11.0))
 		else:
 			wander(delta)
+	
 
 func _process(_delta):
+	if player_view_state == "DEAD": return
 	if(player_noticed):
-		check_if_player_in_sight()
-	if(player_in_attack_zone and attack_cooldown.is_stopped() and is_player_in_sight()):
+		var can_see = player_in_sight()
+		if not can_see:
+			if(player_view_state == "PURSUING" && player_view_state != "GOINGTOLASTPOS"): # if i cant see ya, but i used to see ya
+				lost_View_of_player()
+		else:
+			switch_state("PURSUING")
+	if(player_in_attack_zone and attack_cooldown.is_stopped() and player_in_sight()):
 		throw_snowball()
 		switch_state("ATTACKING")
 
@@ -117,11 +132,24 @@ func take_hit(damage):
 		play_sound(enemy_hurt_sounds.pick_random(), [-1,-1], [0,0], true)
 
 func die():
-	play_sound(enemy_hurt_sounds.pick_random(), [-1,-1], [0,0], true) #REPLACE WITH DEATH SOUND TODO
-	animation_player.play(["DIE1", "DIE2", "DIE3"].pick_random())	
+	switch_state("DEAD")
+	play_sound(enemy_hurt_sounds.pick_random(), [0,0], [0,0], true) #REPLACE WITH DEATH SOUND TODO
+	#animation_player.play(["DIE1", "DIE2", "DIE3"].pick_random())
 func _on_death_timer_timeout() -> void:
 	queue_free()
 
+
+
+func animate(delta):
+	PLAYER.get_node("UserInterface/DebugPanel").add_property("velocity", velocity)
+
+	if velocity.length() > 0:
+		if cur_speed == RUN_SPEED:
+			animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), 1.0, delta * ANIMATION_BLEND))
+		else:
+			animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), 0.0, delta * ANIMATION_BLEND))
+	else:
+		animator.set("parameters/iwr_blend/blend_amount", lerp(animator.get("parameters/iwr_blend/blend_amount"), -1.0, delta * ANIMATION_BLEND))
 
 
 ### MOVEMENT METHODS ########################################################################################
@@ -172,31 +200,8 @@ func _on_wait_in_pos_timer_timeout():
 	set_rand_wander_pos()
 	switch_state("HIDDEN")
 
-func check_if_player_in_sight():
-		var direction = global_position.direction_to( player_pos )
-		var facing = (global_transform.basis.tdotz(direction)) * -1
-		var canseeya
-		
-		vision_cast.look_at(player_pos)
-		vision_cast2.look_at(player_pos)
-		vision_cast3.look_at(player_pos)
-		var can_see = (vision_cast.get_collider() && vision_cast.get_collider().is_in_group("player")) || (vision_cast2.get_collider() && vision_cast2.get_collider().is_in_group("player")) || (vision_cast3.get_collider() && vision_cast3.get_collider().is_in_group("player"))
-		
-		if(!can_see): # if i cant see ya, i cant see ya.
-			canseeya = "I cant see ya, ya behind a wall or somethin ya little shit"
-			if(player_view_state == "PURSUING" && player_view_state != "GOINGTOLASTPOS" && player_view_state != "SHOUT"): # if i cant see ya, but i used to see ya
-				lost_View_of_player()
-		elif(facing > ENEMY_FOV && can_see): #if ya in my fov and i can see ya
-			canseeya = "Im lookin at ya"
-			if(player_noticed):
-				switch_state("PURSUING")
-		else:
-			canseeya = "I cant see ya"
-			
-		# PLAYER.get_node("UserInterface/DebugPanel").add_property("Can enemy see you", canseeya)
-		# PLAYER.get_node("UserInterface/DebugPanel").add_property("behind wall? ", !can_see)
 
-func is_player_in_sight():
+func player_in_sight():
 	var direction = global_position.direction_to( player_pos )
 	var facing = (global_transform.basis.tdotz(direction)) * -1
 	
@@ -206,11 +211,9 @@ func is_player_in_sight():
 	var can_see = (vision_cast.get_collider() && vision_cast.get_collider().is_in_group("player")) || (vision_cast2.get_collider() && vision_cast2.get_collider().is_in_group("player")) || (vision_cast3.get_collider() && vision_cast3.get_collider().is_in_group("player"))
 	
 	if(!can_see): # if i cant see ya, i cant see ya.
-		if(player_view_state == "PURSUING" && player_view_state != "GOINGTOLASTPOS" && player_view_state != "SHOUT"): # if i cant see ya, but i used to see ya
-			return false
-	elif(facing > ENEMY_FOV && can_see): #if ya in my fov and i can see ya
-		if(player_noticed):
-			return true
+		return false
+	elif(player_noticed && facing > ENEMY_FOV && can_see): #if ya in my fov and i can see ya
+		true
 	return false
 		
 func lost_View_of_player():
