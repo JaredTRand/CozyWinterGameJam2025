@@ -111,8 +111,9 @@ func _process(_delta):
 		else:
 			$Timers/player_noticed.start()
 	if(player_in_attack_zone and attack_cooldown.is_stopped() and player_in_sight()):
+		switch_state("PURSUING")
 		throw_snowball()
-		switch_state("ATTACKING")
+		# switch_state("ATTACKING")
 func _on_player_noticed_timeout() -> void:
 	if player_noticed and player_in_sight():
 		switch_state("PURSUING")
@@ -175,7 +176,9 @@ func move_to_player(delta):
 	if not is_on_floor() and gravity:
 		new_velocity.y -= gravity * delta
 	velocity = new_velocity
-	move_and_slide()
+
+	if not player_in_attack_zone:
+		move_and_slide()
 
 func wander(delta):
 	if(!wander_pos):
@@ -218,10 +221,15 @@ func player_in_sight():
 	return false
 		
 func lost_View_of_player():
-	switch_state("GOINGTOLASTPOS")
-	last_player_pos = player_pos
-	wander_pos = last_player_pos
-	nav_agent.target_position = wander_pos
+	$Timers/lost_view_of_player.start()
+func _on_lost_view_of_player_timeout() -> void:
+	if not player_in_sight():
+		switch_state("GOINGTOLASTPOS")
+		last_player_pos = player_pos
+		wander_pos = last_player_pos
+		nav_agent.target_position = wander_pos
+
+	
 ################################################################################################################################################################################
 
 func play_sound(sound, max_db_rng:Array = [0,0], pitch_rng:Array = [0,0], skip_wait_for_done:bool = false):

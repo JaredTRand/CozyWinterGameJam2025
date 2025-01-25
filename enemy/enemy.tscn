@@ -9,10 +9,10 @@ radius = 0.2
 height = 1.755
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_21epk"]
-radius = 12.0
+radius = 8.0
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6tngk"]
-radius = 20.0
+radius = 15.0
 
 [node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_qwp6l")
@@ -87,6 +87,10 @@ one_shot = true
 [node name="player_noticed" type="Timer" parent="Timers"]
 one_shot = true
 
+[node name="lost_view_of_player" type="Timer" parent="Timers"]
+wait_time = 0.25
+one_shot = true
+
 [node name="enemymesh" parent="." instance=ExtResource("3_fea22")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
@@ -96,3 +100,4 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 
 [connection signal="body_exited" from="Areas/notice_player" to="." method="_on_notice_player_body_exited"]
 [connection signal="timeout" from="Timers/death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Timers/player_noticed" to="." method="_on_player_noticed_timeout"]
+[connection signal="timeout" from="Timers/lost_view_of_player" to="." method="_on_lost_view_of_player_timeout"]
