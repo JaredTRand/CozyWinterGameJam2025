@@ -95,6 +95,7 @@ func _physics_process(delta):
 		
 		if(abs(wander_pos.x - global_transform.origin.x) < 0.1 and abs(wander_pos.z - global_transform.origin.z) < 0.1): #if timer stopped or at pos, get new pos
 			switch_state("WAITING")
+			velocity = Vector3.ZERO
 			wait_in_pos_timer.start(rng.randf_range(1.0, 11.0))
 		else:
 			wander(delta)
@@ -108,11 +109,13 @@ func _process(_delta):
 			if(player_view_state == "PURSUING" && player_view_state != "GOINGTOLASTPOS"): # if i cant see ya, but i used to see ya
 				lost_View_of_player()
 		else:
-			switch_state("PURSUING")
+			$Timers/player_noticed.start()
 	if(player_in_attack_zone and attack_cooldown.is_stopped() and player_in_sight()):
 		throw_snowball()
 		switch_state("ATTACKING")
-
+func _on_player_noticed_timeout() -> void:
+	if player_noticed and player_in_sight():
+		switch_state("PURSUING")
 
 func throw_snowball():
 	if attack_cooldown.is_stopped():
@@ -155,8 +158,6 @@ func animate(delta):
 ### MOVEMENT METHODS ########################################################################################
 func update_target_loc(target_loc):
 	player_pos = target_loc
-# func bake_finished(nav):
-# 	nav_bake_finished = true
 
 func set_rand_wander_pos():
 	wander_pos = NavigationServer3D.region_get_random_point(navRegion.get_rid(), 1, false)
@@ -213,7 +214,7 @@ func player_in_sight():
 	if(!can_see): # if i cant see ya, i cant see ya.
 		return false
 	elif(player_noticed && facing > ENEMY_FOV && can_see): #if ya in my fov and i can see ya
-		true
+		return true
 	return false
 		
 func lost_View_of_player():
