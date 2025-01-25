@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var previous_player_view_state:String = "HIDDEN" # HIDDEN, NOTICED
 #@onready var billy_status:String = "WANDERING" # WANDERING, PURSUING, SEARCHING, WAITING, NOTICED, GOINGTOLASTPOS
 @onready var navRegion:NavigationRegion3D = get_tree().get_nodes_in_group("nav")[0]
-@onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var animation_player:AnimationPlayer = $enemymesh/AnimationPlayer
 
 @export var SPEED:float
 @export var RUN_SPEED:float
@@ -82,11 +82,9 @@ func _physics_process(delta):
 		wander(delta)
 		
 	elif(player_view_state == "PURSUING"): #
-		# if(!player_in_view): return
 		cur_speed = RUN_SPEED
 		move_to_player(delta)
 	elif(player_view_state == "WAITING"):
-		#animation_player.play("IDLESHORT")
 		return
 	elif(player_view_state == "HIDDEN"):
 		cur_speed = SPEED
@@ -112,12 +110,16 @@ func _process(_delta):
 			$Timers/player_noticed.start()
 	if(player_in_attack_zone and attack_cooldown.is_stopped() and player_in_sight()):
 		switch_state("PURSUING")
-		throw_snowball()
+		start_throw()
 		# switch_state("ATTACKING")
 func _on_player_noticed_timeout() -> void:
 	if player_noticed and player_in_sight():
 		switch_state("PURSUING")
 
+func start_throw():
+	if animator.get("parameters/OneShot/active"): return
+	animator.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
+	pass
 func throw_snowball():
 	if attack_cooldown.is_stopped():
 		attack_cooldown.start()
@@ -136,15 +138,23 @@ func take_hit(damage):
 		play_sound(enemy_hurt_sounds.pick_random(), [-1,-1], [0,0], true)
 
 func die():
-	switch_state("DEAD")
 	play_sound(enemy_hurt_sounds.pick_random(), [0,0], [0,0], true) #REPLACE WITH DEATH SOUND TODO
-	#animation_player.play(["DIE1", "DIE2", "DIE3"].pick_random())
+	if player_view_state != "DEAD":
+		switch_state("DEAD")
+		animator.queue_free()
+		$Areas.queue_free()
+		$Timers.queue_free()
+		animation_player.play(["Root_001|DIE1", "Root_001|DIE2", "Root_001|DIE3"].pick_random())
+	
+	
 func _on_death_timer_timeout() -> void:
 	queue_free()
 
 
 
 func animate(delta):
+	if player_view_state == "DEAD": return
+
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("velocity", velocity)
 
 	if velocity.length() > 0:
