@@ -12,6 +12,7 @@ extends CharacterBody3D
 @export var RUN_SPEED:float
 @export var TURN_SPEED:float
 @export var ENEMY_FOV = 70
+@export var HEALTH = 100
 
 @onready var wander_pos = set_rand_wander_pos()
 var player_pos
@@ -43,6 +44,8 @@ var player_in_attack_zone:bool
 @onready var snowball_spawn:Node3D = $snowball_spawn
 
 @onready var PLAYER = get_tree().get_nodes_in_group("player")[0]
+
+@onready var enemy_hurt_sounds = [load("res://enemy/sounds/oof1.wav"), load("res://enemy/sounds/oof2.wav"), load("res://enemy/sounds/oof3.wav"), load("res://enemy/sounds/oof4.wav"), load("res://enemy/sounds/oof5.wav"), load("res://enemy/sounds/oof6.wav"), load("res://enemy/sounds/oof7.wav")]
 
 func _ready():
 	ENEMY_FOV = cos(deg_to_rad(ENEMY_FOV))
@@ -106,11 +109,26 @@ func throw_snowball():
 			newball.global_rotation = snowball_spawn.global_rotation
 			newball.apply_impulse((-face_dir.get_global_transform().basis.z  * newball.speed) + velocity)
 
+func take_hit(damage):
+	HEALTH -= damage
+	if HEALTH <= 0:
+		die()
+	else:
+		play_sound(enemy_hurt_sounds.pick_random(), [-1,-1], [0,0], true)
+
+func die():
+	play_sound(enemy_hurt_sounds.pick_random(), [-1,-1], [0,0], true) #REPLACE WITH DEATH SOUND TODO
+	animation_player.play(["DIE1", "DIE2", "DIE3"].pick_random())	
+func _on_death_timer_timeout() -> void:
+	queue_free()
+
+
+
 ### MOVEMENT METHODS ########################################################################################
 func update_target_loc(target_loc):
 	player_pos = target_loc
-func bake_finished(nav):
-	nav_bake_finished = true
+# func bake_finished(nav):
+# 	nav_bake_finished = true
 
 func set_rand_wander_pos():
 	wander_pos = NavigationServer3D.region_get_random_point(navRegion.get_rid(), 1, false)
