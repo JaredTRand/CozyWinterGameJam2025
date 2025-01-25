@@ -15,13 +15,13 @@ run/main_scene="res://testing_area.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/mode=2
-
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[global_group]
+
+enemy=""
 
 [input]
 

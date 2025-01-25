@@ -7,10 +7,14 @@ var has_hit = false
 func _on_body_entered(body: Node) -> void:
 	if not has_hit:
 		has_hit = true
-		$CollisionShape3D.disabled = true
+		call_deferred("do_the_stuff")
 		$MeshInstance3D.visible = false
 		snow_break.restart()
 		$AudioStreamPlayer3D.play()
 
+
 func _on_snow_break_finished() -> void:
 	queue_free()
+
+func do_the_stuff():
+		$CollisionShape3D.disabled = true

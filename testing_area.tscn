@@ -1,8 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://cv6w15l1g2lel"]
+[gd_scene load_steps=10 format=3 uid="uid://cv6w15l1g2lel"]
 
+[ext_resource type="Script" path="res://testing_area.gd" id="1_45oee"]
 [ext_resource type="Texture2D" uid="uid://ty18a3hkxadm" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_l6kca"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="2_x77yc"]
 [ext_resource type="PackedScene" uid="uid://cja0hhaaqvm75" path="res://player/snowball/snowball.tscn" id="3_eys8i"]
+[ext_resource type="PackedScene" uid="uid://byr6fdb3bjivm" path="res://enemy/enemy.tscn" id="4_b8vnu"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_reegx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umphh"]
 albedo_texture = ExtResource("1_l6kca")
@@ -16,15 +20,19 @@ material = SubResource("StandardMaterial3D_umphh")
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_45oee")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_reegx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(26.5041, 0, 0, 0, 0.957199, 0, 0, 0, 31.9046, 0, 0, 0)
 mesh = SubResource("BoxMesh_gxkj2")
 skeleton = NodePath("")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
 transform = Transform3D(26.6319, 0, 0, 0, 0.961815, 0, 0, 0, 32.0584, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_x7oyv")
 
@@ -32,6 +40,18 @@ shape = SubResource("ConvexPolygonShape3D_x7oyv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07041, 0.718547, -0.262015)
 snowball = ExtResource("3_eys8i")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Character"]
-transform = Transform3D(0.86362, 0.249869, -0.437865, 0.0377699, 0.834024, 0.550434, 0.502726, -0.491904, 0.710842, 0, 5, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.86362, 0.249869, -0.437865, 0.0377699, 0.834024, 0.550434, 0.502726, -0.491904, 0.710842, 1.07041, 5.71855, -0.262015)
 light_energy = 2.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.99877, 0.0492192, -0.00604345, 0.0377699, 0.834024, 0.550434, 0.0321323, 0.549529, -0.834857, 1.07041, 5.71855, -0.262015)
+light_energy = 2.0
+
+[node name="Enemy" parent="." instance=ExtResource("4_b8vnu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59243, -10.9479)
+SPEED = 1.0
+RUN_SPEED = 2.0
+TURN_SPEED = 8.0
+
+[connection signal="bake_finished" from="NavigationRegion3D" to="." method="_on_navigation_region_3d_bake_finished"]

@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://byr6fdb3bjivm"]
+
+[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_qwp6l"]
+[ext_resource type="PackedScene" uid="uid://cja0hhaaqvm75" path="res://player/snowball/snowball.tscn" id="2_305id"]
+[ext_resource type="PackedScene" uid="uid://bwpqjfnxxmao2" path="res://enemy/character_small.tscn" id="2_j02n7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m1m1r"]
+radius = 0.2
+height = 1.755
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_21epk"]
+radius = 12.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6tngk"]
+radius = 20.0
+
+[node name="Enemy" type="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_qwp6l")
+SPEED = 10.0
+RUN_SPEED = 20.0
+TURN_SPEED = 20.0
+snowball = ExtResource("2_305id")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.871862, 0.0252782)
+shape = SubResource("CapsuleShape3D_m1m1r")
+
+[node name="characterSmall" parent="." instance=ExtResource("2_j02n7")]
+transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="snowball_spawn" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04911, 0.61377)
+
+[node name="face_dir" type="Node3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="sound_maker" type="AudioStreamPlayer3D" parent="."]
+volume_db = 1.0
+
+[node name="footstep_sound" type="AudioStreamPlayer3D" parent="."]
+
+[node name="RayCasts" type="Node3D" parent="."]
+
+[node name="vision_cast" type="RayCast3D" parent="RayCasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.42416, 0)
+target_position = Vector3(0, 0, -50)
+
+[node name="vision_cast2" type="RayCast3D" parent="RayCasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 1.42463, 0)
+target_position = Vector3(0, 0, -50)
+
+[node name="vision_cast3" type="RayCast3D" parent="RayCasts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15, 1.42463, 0)
+target_position = Vector3(0, 0, -50)
+
+[node name="Areas" type="Node3D" parent="."]
+
+[node name="attack_player" type="Area3D" parent="Areas"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/attack_player"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_21epk")
+
+[node name="notice_player" type="Area3D" parent="Areas"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/notice_player"]
+shape = SubResource("CylinderShape3D_6tngk")
+
+[node name="Timers" type="Node3D" parent="."]
+
+[node name="wait_in_pos_timer" type="Timer" parent="Timers"]
+wait_time = 1.5
+one_shot = true
+
+[node name="footstep_timer" type="Timer" parent="Timers"]
+wait_time = 1.5
+
+[node name="attack_cooldown_timer" type="Timer" parent="Timers"]
+wait_time = 1.3
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="body_entered" from="Areas/attack_player" to="." method="_on_attack_player_body_entered"]
+[connection signal="body_exited" from="Areas/attack_player" to="." method="_on_attack_player_body_exited"]
+[connection signal="body_entered" from="Areas/notice_player" to="." method="_on_notice_player_body_entered"]
+[connection signal="body_exited" from="Areas/notice_player" to="." method="_on_notice_player_body_exited"]
