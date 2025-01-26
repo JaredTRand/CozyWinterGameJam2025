@@ -99,6 +99,10 @@ interact={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_8="dontincludeinnave"
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"

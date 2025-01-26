@@ -1,7 +1,10 @@
 extends Node3D
 @onready var player = $Character
 @onready var navServer:NavigationRegion3D = $Environment_shit/NavigationRegion3D
+@export var enemy_count:int = 10
+@export var enemies_at_a_time:int = 5
 var bake_finished = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
