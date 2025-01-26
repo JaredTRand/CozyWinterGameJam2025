@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfemmf8q6ccl5"
-path.s3tc="res://.godot/imported/racerPurpleMale.png-d3d924f456bd8f9ad49d1611fc9f0d78.s3tc.ctex"
+uid="uid://cos46ver02lo2"
+path.s3tc="res://.godot/imported/racerPurpleMale_aa.png-2b416ee8f32885abba391c62aa1561db.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://enemy/racerPurpleMale.png"
-dest_files=["res://.godot/imported/racerPurpleMale.png-d3d924f456bd8f9ad49d1611fc9f0d78.s3tc.ctex"]
+source_file="res://enemy/racerPurpleMale_aa.png"
+dest_files=["res://.godot/imported/racerPurpleMale_aa.png-2b416ee8f32885abba391c62aa1561db.s3tc.ctex"]
 
 [params]
 

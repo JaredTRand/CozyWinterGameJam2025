@@ -557,21 +557,12 @@ shape = SubResource("ConcavePolygonShape3D_krkrg")
 
 [node name="Snowball_stack" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.466, 0.5, -28.3017)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack2" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.950086, 0, -0.311987, 0, 1, 0, 0.311987, 0, 0.950086, -16.256, 0.5, -34.2016)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack3" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.723955, 0, 0.689847, 0, 1, 0, -0.689847, 0, 0.723955, -17.4565, 0.5, -36.7875)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="sled2" type="StaticBody3D" parent="Environment_shit/NavigationRegion3D/odds and ends"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18448, 0.5, 7.54995)
@@ -586,99 +577,48 @@ shape = SubResource("ConvexPolygonShape3D_buyxb")
 
 [node name="Snowball_stack4" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 1.8553, 0.5, -3.50027)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack9" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -5.59725, 0.5, -8.16017)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack10" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -25.7041, 0.5, 5.16605)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack11" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -34.7474, 0.5, -10.8508)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack12" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 1.37309, 0.5, -17.9615)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack13" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.255294, 0, 0.966864, 0, 1, 0, -0.966864, 0, 0.255294, 2.77447, 0.5, -17.5638)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack14" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.255294, 0, 0.966864, 0, 1, 0, -0.966864, 0, 0.255294, 38.5481, 0.5, -36.2527)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack16" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.255294, 0, 0.966864, 0, 1, 0, -0.966864, 0, 0.255294, 44.5154, 0.5, -38.2386)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack17" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.255294, 0, 0.966864, 0, 1, 0, -0.966864, 0, 0.255294, 36.056, 0.5, -39.5426)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack15" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.255294, 0, 0.966864, 0, 1, 0, -0.966864, 0, 0.255294, 43.3753, 0.5, -35.1259)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack5" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 5.38516, 0.5, 8.66205)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack18" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 38.1464, 0.5, 23.9094)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack19" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 21.1462, 0.5, 16.4399)
-is_active = null
-interaction_cooldown_time = null
-openable = null
-
-[node name="Snowball_stack6" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
-transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 5.38516, 0.5, 8.66205)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack7" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -12.2697, 0.500001, 25.4124)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="Snowball_stack8" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.285003, 0, 0.958527, 0, 1, 0, -0.958527, 0, 0.285003, -14.6143, 0.500001, 21.0828)
-is_active = null
-interaction_cooldown_time = null
-openable = null
 
 [node name="trees" type="Node3D" parent="Environment_shit/NavigationRegion3D"]
 

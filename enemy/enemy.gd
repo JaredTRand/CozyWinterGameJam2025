@@ -54,6 +54,9 @@ const ANIMATION_BLEND : float = 7.0
 
 func _ready():
 	ENEMY_FOV = cos(deg_to_rad(ENEMY_FOV))
+	
+	var skin = load(["res://enemy/enemyskin1.tres", "res://enemy/enemyskin2.tres", "res://enemy/enemyskin3.tres"].pick_random())
+	$enemymesh/Root_001/Skeleton3D/characterSmall.set_surface_override_material(0, skin)
 
 	if not PLAYER:
 		assert(false, "PLAYER NOT FOUND BY ENEMY!!")
