@@ -112,6 +112,7 @@ var is_dead:bool = false
 @onready var reload_timer:Timer = $timers/reload_timer
 @onready var interation_timer:Timer = $timers/interaction_timer
 
+
 # The reticle should always have a Control node as the root
 var RETICLE : Control
 

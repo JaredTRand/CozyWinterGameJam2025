@@ -52,6 +52,8 @@ const ANIMATION_BLEND : float = 7.0
 
 @onready var enemy_hurt_sounds = [load("res://enemy/sounds/oof1.wav"), load("res://enemy/sounds/oof2.wav"), load("res://enemy/sounds/oof3.wav"), load("res://enemy/sounds/oof4.wav"), load("res://enemy/sounds/oof5.wav"), load("res://enemy/sounds/oof6.wav"), load("res://enemy/sounds/oof7.wav")]
 
+signal enemy_death
+
 func _ready():
 	ENEMY_FOV = cos(deg_to_rad(ENEMY_FOV))
 	
@@ -146,6 +148,7 @@ func take_hit(damage):
 func die():
 	play_sound(enemy_hurt_sounds.pick_random(), [0,0], [0,0], true) #REPLACE WITH DEATH SOUND TODO
 	if player_view_state != "DEAD":
+		enemy_death.emit()
 		switch_state("DEAD")
 		animator.queue_free()
 		$Areas.queue_free()

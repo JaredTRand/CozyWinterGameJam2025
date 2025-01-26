@@ -355,7 +355,6 @@ metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ot52e"]
 resource_name = "_defaultMat"
-albedo_color = Color(1, 1, 1, 1)
 metallic = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lamy0"]
@@ -557,12 +556,15 @@ shape = SubResource("ConcavePolygonShape3D_krkrg")
 
 [node name="Snowball_stack" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.466, 0.5, -28.3017)
+pickup_sound = null
 
 [node name="Snowball_stack2" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.950086, 0, -0.311987, 0, 1, 0, 0.311987, 0, 0.950086, -16.256, 0.5, -34.2016)
+pickup_sound = null
 
 [node name="Snowball_stack3" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.723955, 0, 0.689847, 0, 1, 0, -0.689847, 0, 0.723955, -17.4565, 0.5, -36.7875)
+pickup_sound = null
 
 [node name="sled2" type="StaticBody3D" parent="Environment_shit/NavigationRegion3D/odds and ends"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.18448, 0.5, 7.54995)
@@ -1789,26 +1791,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.3384, 1.60603, 16.9831)
 [node name="enemyspawnloc4" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6569, 1.60603, 22.4396)
 
-[node name="enemyspawnloc5" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32856, 1.60603, 20.7444)
-
-[node name="enemyspawnloc6" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638062, 1.60603, 12.5332)
-
-[node name="enemyspawnloc7" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2749, 1.60603, 11.4737)
-
-[node name="enemyspawnloc8" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.479141, 1.60603, 4.00417)
-
 [node name="enemyspawnloc9" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9766, 1.60603, 2.62681)
 
 [node name="enemyspawnloc10" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8634, 1.60603, 23.8699)
-
-[node name="enemyspawnloc11" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1283, 1.60603, 10.3082)
 
 [node name="enemyspawnloc12" type="Node3D" parent="Environment_shit/spawnlocs" groups=["enemyspawnloc"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1283, 1.60603, 10.3082)
