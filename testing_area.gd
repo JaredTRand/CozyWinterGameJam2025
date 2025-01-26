@@ -5,25 +5,26 @@ extends Node3D
 @export var enemies_at_a_time:int = 10
 @export var enemy:PackedScene
 var bake_finished = false
+@onready var all_spawn_positions = get_tree().get_nodes_in_group("enemyspawnloc")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	navServer.bake_navigation_mesh()
+	#navServer.bake_navigation_mesh()
 	spawn_enemies(enemies_at_a_time)
 
 
 func spawn_enemies(num):
 	for i in num:
-		var spawn_pos = NavigationServer3D.region_get_random_point(navServer.get_rid(), 1, false)
+		# var spawn_pos = NavigationServer3D.region_get_random_point(navServer.get_rid(), 1, false)
 		if enemy.can_instantiate():
 			var new_enemy = enemy.instantiate()
-			new_enemy.global_position = spawn_pos
+			new_enemy.global_position = all_spawn_positions.pick_random().global_position
 			get_tree().root.add_child.call_deferred(new_enemy)
 			
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
 	get_tree().call_group("enemy", "update_target_loc", player.global_transform.origin)
-func _on_navigation_region_3d_bake_finished() -> void:
-	get_tree().call_group("enemy", "bake_finished")
+#func _on_navigation_region_3d_bake_finished() -> void:
+	#get_tree().call_group("enemy", "bake_finished")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=43 format=4 uid="uid://da03cjd4s354q"]
+[gd_scene load_steps=45 format=4 uid="uid://da03cjd4s354q"]
 
 [ext_resource type="Script" path="res://level_assets/interaction.gd" id="1_pb3tu"]
+[ext_resource type="AudioStream" uid="uid://p5itxugvfyr6" path="res://level_assets/dooropen.wav" id="2_qn6cn"]
 [ext_resource type="PackedScene" uid="uid://ql2uxrv4ag5y" path="res://cabin_corner_2.tscn" id="2_u6uvo"]
+[ext_resource type="AudioStream" uid="uid://cpkytieo0wvwe" path="res://level_assets/doorclose.wav" id="3_oc6wg"]
 [ext_resource type="PackedScene" uid="uid://bbgu45kvgg6e6" path="res://cabin_floor_2.tscn" id="3_udry8"]
 [ext_resource type="PackedScene" uid="uid://de207cnag88by" path="res://cabin_window_2.tscn" id="3_wo8kb"]
 [ext_resource type="PackedScene" uid="uid://d1dtvrx7rr7vq" path="res://cabin_wall_2.tscn" id="5_vwu0o"]
@@ -581,6 +583,8 @@ script = ExtResource("1_pb3tu")
 interaction_type = "Open"
 interaction_name = "Door"
 openable = true
+open_sound = ExtResource("2_qn6cn")
+close_sound = ExtResource("3_oc6wg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="cabinDoor2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.34, 0.657268, 0, 0)
@@ -595,6 +599,9 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_qrtw2")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="cabinDoor2/StaticBody3D"]
+volume_db = -10.0
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="cabinDoor2"]
 

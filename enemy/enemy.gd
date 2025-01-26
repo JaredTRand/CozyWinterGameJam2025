@@ -245,7 +245,7 @@ func _on_lost_view_of_player_timeout() -> void:
 	
 ################################################################################################################################################################################
 
-func play_sound(sound, max_db_rng:Array = [0,0], pitch_rng:Array = [0,0], skip_wait_for_done:bool = false):
+func play_sound(sound, max_db_rng:Array = [0,0], pitch_rng:Array = [0.1,0.1], skip_wait_for_done:bool = false):
 	if skip_wait_for_done or !sound_maker.is_playing(): 
 		 #just to give the sound a litte variety
 		sound_maker.stream = sound
