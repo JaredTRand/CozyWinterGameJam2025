@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="CozyWinterGameJam2025"
-run/main_scene="res://Arena.tscn"
+run/main_scene="res://startlevel.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
 
 [editor_plugins]
 

@@ -193,7 +193,7 @@ func move_to_player(delta):
 	var new_velocity = (next_loc - current_loc).normalized() * cur_speed
 
 	if not is_on_floor() and gravity:
-		new_velocity.y -= gravity * delta
+		new_velocity.y -= gravity*100 * delta
 	velocity = new_velocity
 
 	if not player_in_attack_zone:
@@ -210,7 +210,7 @@ func wander(delta):
 	var new_velocity = (next_loc - current_loc).normalized() * cur_speed
 
 	if not is_on_floor() and gravity:
-		new_velocity.y -= gravity * delta
+		new_velocity.y -= gravity*100 * delta
 	velocity = new_velocity
 	move_and_slide()
 

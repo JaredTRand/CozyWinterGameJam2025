@@ -30,6 +30,9 @@ size = Vector3(10, 5, 1)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_45oee")
+enemy_count = 0
+enemies_at_a_time = 0
+enemy = ExtResource("4_b8vnu")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." groups=["nav"]]
 navigation_mesh = SubResource("NavigationMesh_reegx")
@@ -102,7 +105,6 @@ light_energy = 2.0
 
 [node name="Enemy" parent="." instance=ExtResource("4_b8vnu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59243, -22.2823)
-SPEED = 2.0
 RUN_SPEED = 4.0
 TURN_SPEED = 8.0
 
