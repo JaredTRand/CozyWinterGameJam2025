@@ -23,6 +23,13 @@ window/size/mode=2
 
 enabled=PackedStringArray()
 
+[file_customization]
+
+folder_colors={
+"res://enemy/": "red",
+"res://player/": "purple"
+}
+
 [input]
 
 ui_accept={

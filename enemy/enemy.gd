@@ -137,7 +137,8 @@ func take_hit(damage):
 	if HEALTH <= 0:
 		die()
 	else:
-		play_sound(enemy_hurt_sounds.pick_random(), [-1,-1], [0,0], true)
+		switch_state("PURSUING")
+		play_sound(enemy_hurt_sounds.pick_random(), [0.1,0.1], [0,0], true)
 
 func die():
 	play_sound(enemy_hurt_sounds.pick_random(), [0,0], [0,0], true) #REPLACE WITH DEATH SOUND TODO

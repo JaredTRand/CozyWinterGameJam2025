@@ -51,11 +51,11 @@ extends CharacterBody3D
 @export var SPRINT : String = "sprint"
 @export var MAIN_ACTION : String = "main_action"
 # Uncomment if you want controller support
-#@export var controller_sensitivity : float = 0.035
-#@export var LOOK_LEFT : String = "look_left"
-#@export var LOOK_RIGHT : String = "look_right"
-#@export var LOOK_UP : String = "look_up"
-#@export var LOOK_DOWN : String = "look_down"
+@export var controller_sensitivity : float = 0.035
+@export var LOOK_LEFT : String = "look_left"
+@export var LOOK_RIGHT : String = "look_right"
+@export var LOOK_UP : String = "look_up"
+@export var LOOK_DOWN : String = "look_down"
 
 
 ## Enable or disable jumping. Useful for restrictive storytelling environments.
@@ -92,7 +92,11 @@ var was_on_floor : bool = true # Was the player on the floor last frame (for lan
 
 @export_group("Jared's Extra Settings")
 @export var snowball:PackedScene
+@export var max_snowballs:int = 8
+@export var initital_snowballs:int = 4
+var current_snowball_count
 @onready var snowball_spawn:Node3D = $Head/snowball_spawn
+
 
 #TIMERS
 @onready var cooldown_throw:Timer = $timers/cooldown_throw
@@ -109,6 +113,8 @@ var mouseInput : Vector2 = Vector2(0,0)
 func _ready():
 	#It is safe to comment this line if your game doesn't start with the mouse captured
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	current_snowball_count = initital_snowballs
 	
 	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
 	HEAD.rotation.y = rotation.y
@@ -213,8 +219,14 @@ func _physics_process(delta):
 
 func handle_action():
 	if Input.is_action_just_pressed("main_action") and cooldown_throw.is_stopped():
-		cooldown_throw.start()
+		throw_snowball()
+
+func throw_snowball():
+	if current_snowball_count > 0:
 		if snowball.can_instantiate():
+			cooldown_throw.start()
+			current_snowball_count -= 1
+			
 			var newball:RigidBody3D = snowball.instantiate()
 			get_tree().root.add_child(newball)
 			newball.global_position = snowball_spawn.global_position
