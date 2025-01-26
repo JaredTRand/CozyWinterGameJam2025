@@ -39,7 +39,7 @@ func enemy_died():
 		you_won()
 
 func you_won():
-	
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
