@@ -1,11 +1,13 @@
 extends RigidBody3D
 @export var speed:int = 100
 @onready var snow_break:GPUParticles3D = $snow_break
+var dont_hit
 
 var has_hit = false
 
 func _on_body_entered(body: Node) -> void:
 	if not has_hit:
+		if dont_hit and body == dont_hit: return
 		if body.has_method("take_hit"):
 			if body.is_in_group("head"): # not working yet TODO
 				body.take_hit(100)

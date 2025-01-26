@@ -222,10 +222,13 @@ func _physics_process(delta):
 	was_on_floor = is_on_floor() # This must always be at the end of physics_process
 
 func handle_action():
-	if Input.is_action_just_pressed("main_action") and cooldown_throw.is_stopped():
+	if Input.is_action_just_pressed("main_action") and cooldown_throw.is_stopped() and reload_timer.is_stopped():
 		throw_snowball()
 	if Input.is_action_just_pressed("reload") and reload_timer.is_stopped():
 		reload_timer.start()
+		if hotbar_sound:
+			hotbar_sound.stream = load("res://player/sounds/snow_pack.wav")
+			if hotbar_sound.stream: hotbar_sound.play()
 
 func throw_snowball():
 	if current_snowball_count <= 0:
@@ -239,6 +242,7 @@ func throw_snowball():
 			
 			var newball:RigidBody3D = snowball.instantiate()
 			get_tree().root.add_child(newball)
+			newball.dont_hit = self
 			newball.global_position = snowball_spawn.global_position
 			newball.global_rotation = snowball_spawn.global_rotation
 			newball.apply_impulse((-HEAD.get_global_transform().basis.z  * newball.speed) + velocity)
@@ -249,17 +253,14 @@ func _on_reload_timer_timeout() -> void:
 func reload_snowball():
 	current_snowball_count += 1
 	set_snowballl_count(current_snowball_count)
+	
 
 func set_snowballl_count(count):
-	if hotbar_sound:
-		hotbar_sound.stream = load("res://world/sounds/flake4shakes.wav")
-		if hotbar_sound.stream: hotbar_sound.play()
-
-	snowball_icon.find_child("snowball_count").text = str(current_snowball_count)
-
 	#if adding new snowball
 	if count > int(snowball_icon.find_child("snowball_count").text):
 		snowball_icon.find_child("AnimationPlayer").play("moreflakes2")
+		
+	snowball_icon.find_child("snowball_count").text = str(current_snowball_count)
 
 func handle_jumping():
 	if jumping_enabled:
