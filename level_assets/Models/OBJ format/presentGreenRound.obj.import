@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dkrmets0nx7jc"
+path="res://.godot/imported/presentGreenRound.obj-83554ecf3d059282d4d2a713946f6867.mesh"
+
+[deps]
+
+files=["res://.godot/imported/presentGreenRound.obj-83554ecf3d059282d4d2a713946f6867.mesh"]
+
+source_file="res://level_assets/Models/OBJ format/presentGreenRound.obj"
+dest_files=["res://.godot/imported/presentGreenRound.obj-83554ecf3d059282d4d2a713946f6867.mesh", "res://.godot/imported/presentGreenRound.obj-83554ecf3d059282d4d2a713946f6867.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

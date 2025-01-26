@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://x8kvp3xa44by"
+path="res://.godot/imported/cabinSideCenter.obj-22bb87e69f89f4d52ec39e25a760b4cd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cabinSideCenter.obj-22bb87e69f89f4d52ec39e25a760b4cd.mesh"]
+
+source_file="res://level_assets/Models/OBJ format/cabinSideCenter.obj"
+dest_files=["res://.godot/imported/cabinSideCenter.obj-22bb87e69f89f4d52ec39e25a760b4cd.mesh", "res://.godot/imported/cabinSideCenter.obj-22bb87e69f89f4d52ec39e25a760b4cd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

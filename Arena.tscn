@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=3 uid="uid://e7pbhuq3akcl"]
+
+[ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_aikiq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13ipq"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ugwdp"]
+sky_material = SubResource("ProceduralSkyMaterial_13ipq")
+
+[sub_resource type="Environment" id="Environment_mevtw"]
+background_mode = 2
+sky = SubResource("Sky_ugwdp")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.618942, 0.651504, 0.702668, 1)
+fog_sun_scatter = 0.5
+fog_density = 0.02
+fog_sky_affect = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_iu73k"]
+size = Vector3(640, 1, 640)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_48087"]
+points = PackedVector3Array(324.952, 4.57738, 324.952, -324.952, -5.57738, -324.952, -324.952, 4.57738, -324.952, 324.952, -5.57738, -324.952, -324.952, -5.57738, 324.952, -324.952, 4.57738, 324.952, 324.952, 4.57738, -324.952, 324.952, -5.57738, 324.952)
+
+[sub_resource type="Gradient" id="Gradient_1ffxu"]
+offsets = PackedFloat32Array(0, 0.507143, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v5fhj"]
+gradient = SubResource("Gradient_1ffxu")
+
+[sub_resource type="Curve" id="Curve_pwed4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0619048, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.72233), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_510tl"]
+curve = SubResource("Curve_pwed4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0k7or"]
+emission_shape_scale = Vector3(640, 2, 640)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -5.5, 0)
+radial_accel_min = -4.0
+radial_accel_max = 4.0
+tangential_accel_min = -8.0
+tangential_accel_max = 8.0
+damping_max = 4.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_510tl")
+color = Color(0.915769, 0.915769, 0.915769, 1)
+color_ramp = SubResource("GradientTexture1D_v5fhj")
+
+[sub_resource type="Gradient" id="Gradient_xq4yw"]
+offsets = PackedFloat32Array(0.182456, 0.382456)
+colors = PackedColorArray(1, 1, 1, 1, 0.45098, 0.45098, 0.45098, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_31kpf"]
+gradient = SubResource("Gradient_xq4yw")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6on6f"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_31kpf")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_7g5ct"]
+material = SubResource("StandardMaterial3D_6on6f")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Environment_shit" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment_shit"]
+environment = SubResource("Environment_mevtw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Environment_shit"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment_shit/StaticBody3D"]
+mesh = SubResource("BoxMesh_iu73k")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_shit/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_48087")
+
+[node name="Snow" type="GPUParticles3D" parent="Environment_shit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.0751, 0)
+amount = 16384
+lifetime = 3.5
+visibility_aabb = AABB(-34.0517, -50.7925, -35.1337, 62.935, 53.0841, 84.7917)
+process_material = SubResource("ParticleProcessMaterial_0k7or")
+draw_pass_1 = SubResource("QuadMesh_7g5ct")
+
+[node name="Character" parent="." instance=ExtResource("1_aikiq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594702, 0)

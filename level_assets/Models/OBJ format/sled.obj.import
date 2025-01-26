@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dlb6d7qyo0s0u"
+path="res://.godot/imported/sled.obj-ab327e501710a82c7b6a3fb02dce65ae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sled.obj-ab327e501710a82c7b6a3fb02dce65ae.mesh"]
+
+source_file="res://level_assets/Models/OBJ format/sled.obj"
+dest_files=["res://.godot/imported/sled.obj-ab327e501710a82c7b6a3fb02dce65ae.mesh", "res://.godot/imported/sled.obj-ab327e501710a82c7b6a3fb02dce65ae.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

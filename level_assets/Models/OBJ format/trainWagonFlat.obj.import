@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5px518t3btfw"
+path="res://.godot/imported/trainWagonFlat.obj-18f08b1a80f45800e777b27d794b16d7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/trainWagonFlat.obj-18f08b1a80f45800e777b27d794b16d7.mesh"]
+
+source_file="res://level_assets/Models/OBJ format/trainWagonFlat.obj"
+dest_files=["res://.godot/imported/trainWagonFlat.obj-18f08b1a80f45800e777b27d794b16d7.mesh", "res://.godot/imported/trainWagonFlat.obj-18f08b1a80f45800e777b27d794b16d7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

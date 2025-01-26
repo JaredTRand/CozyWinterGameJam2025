@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ctvgbewjl6y8w"
+path="res://.godot/imported/cabinWallHalf.obj-524256fd760da72d3404ac6a4f5edf6f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cabinWallHalf.obj-524256fd760da72d3404ac6a4f5edf6f.mesh"]
+
+source_file="res://level_assets/Models/OBJ format/cabinWallHalf.obj"
+dest_files=["res://.godot/imported/cabinWallHalf.obj-524256fd760da72d3404ac6a4f5edf6f.mesh", "res://.godot/imported/cabinWallHalf.obj-524256fd760da72d3404ac6a4f5edf6f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
