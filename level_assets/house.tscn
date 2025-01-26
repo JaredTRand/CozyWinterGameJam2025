@@ -105,33 +105,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_3tiqi")
 
-[sub_resource type="Animation" id="Animation_eleks"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.8326, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("door:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.8326, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_hylq2"]
 length = 0.001
 tracks/0/type = "value"
@@ -157,6 +130,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eleks"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.8326, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.8326, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qrtw2"]
@@ -365,7 +365,6 @@ metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sw2bx"]
 resource_name = "_defaultMat"
-albedo_color = Color(1, 1, 1, 1)
 metallic = 1.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_j0xri"]
@@ -513,7 +512,6 @@ metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pk6a6"]
 resource_name = "_defaultMat"
-albedo_color = Color(1, 1, 1, 1)
 metallic = 1.0
 emission_enabled = true
 emission = Color(0.887624, 0.887624, 0, 1)
@@ -740,3 +738,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.3819e-09, -0.0130959, -0.07
 light_color = Color(0.989444, 1, 0.716445, 1)
 light_energy = 5.0
 omni_range = 10.0
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(0.606655, -0.794966, 0, 0.794966, 0.606655, 0, 0, 0, 1, 2.26196, 5.66498, -6.02886)
+size = Vector3(0.788689, 6.25537, 13.5)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(-0.592604, -0.805494, 0, 0.805494, -0.592604, 0, 0, 0, 1, -2.31638, 5.79672, -6.02886)
+size = Vector3(1.02605, 6.1748, 13.5)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17045, 2.0546, -5.98396)
+size = Vector3(0.48, 4.26398, 12.35)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.24014, 2.11856, -5.98396)
+size = Vector3(0.48, 4.39191, 12.35)
+
+[node name="GPUParticlesCollisionBox3D5" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.205476, 3.91933, -12.377)
+size = Vector3(0.747324, 7.99344, 10.0687)
+
+[node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.178241, 3.84499, 0.301829)
+size = Vector3(0.950083, 7.84476, 9.66655)

@@ -1,6 +1,6 @@
 extends Node3D
 @onready var player = $Character
-@onready var navServer:NavigationRegion3D = $NavigationRegion3D
+@onready var navServer:NavigationRegion3D = $Environment_shit/NavigationRegion3D
 var bake_finished = false
 
 # Called when the node enters the scene tree for the first time.
