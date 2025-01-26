@@ -46,7 +46,7 @@ point_count = 3
 curve = SubResource("Curve_pwed4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0k7or"]
-emission_shape_scale = Vector3(150, 2, 150)
+emission_shape_scale = Vector3(50, 2, 50)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 direction = Vector3(0, -1, 0)
@@ -418,7 +418,7 @@ environment = SubResource("Environment_mevtw")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.0751, 0)
 amount = 16384
 lifetime = 3.5
-visibility_aabb = AABB(-34.0517, -50.7925, -35.1337, 62.935, 53.0841, 84.7917)
+visibility_aabb = AABB(-95.5744, -69.2419, -94.6515, 184.557, 72.2351, 191.468)
 process_material = SubResource("ParticleProcessMaterial_0k7or")
 draw_pass_1 = SubResource("QuadMesh_7g5ct")
 
@@ -570,7 +570,7 @@ transform = Transform3D(-0.0196167, 0, -1.9999, 0, 2, 0, 1.9999, 0, -0.0196167, 
 [node name="odds and ends" type="Node3D" parent="Environment_shit/NavigationRegion3D"]
 
 [node name="snowmanFancy2" type="StaticBody3D" parent="Environment_shit/NavigationRegion3D/odds and ends"]
-transform = Transform3D(-0.593756, 0, 0.804645, 0, 1, 0, -0.804645, 0, -0.593756, 5.55971, 0.5, 16.9018)
+transform = Transform3D(-0.174611, 0, -0.984638, 0, 1, 0, 0.984638, 0, -0.174611, -14.6222, 0.5, 22.7102)
 
 [node name="snowmanFancy" type="MeshInstance3D" parent="Environment_shit/NavigationRegion3D/odds and ends/snowmanFancy2"]
 mesh = SubResource("ArrayMesh_o7ov8")
@@ -587,6 +587,26 @@ mesh = SubResource("ArrayMesh_h4xqo")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_shit/NavigationRegion3D/odds and ends/snowman2"]
+shape = SubResource("ConvexPolygonShape3D_bc2kg")
+
+[node name="snowmanFancy3" type="StaticBody3D" parent="Environment_shit/NavigationRegion3D/odds and ends"]
+transform = Transform3D(-0.595612, 0, 0.455792, 0, 0.75, 0, -0.455792, 0, -0.595612, -27.9133, 0.5, -46.4721)
+
+[node name="snowmanFancy" type="MeshInstance3D" parent="Environment_shit/NavigationRegion3D/odds and ends/snowmanFancy3"]
+mesh = SubResource("ArrayMesh_o7ov8")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_shit/NavigationRegion3D/odds and ends/snowmanFancy3"]
+shape = SubResource("ConvexPolygonShape3D_ik06o")
+
+[node name="snowman3" type="StaticBody3D" parent="Environment_shit/NavigationRegion3D/odds and ends"]
+transform = Transform3D(0.339408, 0, -0.668807, 0, 0.75, 0, 0.668807, 0, 0.339408, -37.2688, 0.5, -40.9036)
+
+[node name="snowman" type="MeshInstance3D" parent="Environment_shit/NavigationRegion3D/odds and ends/snowman3"]
+mesh = SubResource("ArrayMesh_h4xqo")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment_shit/NavigationRegion3D/odds and ends/snowman3"]
 shape = SubResource("ConvexPolygonShape3D_bc2kg")
 
 [node name="snowFort2" type="StaticBody3D" parent="Environment_shit/NavigationRegion3D/odds and ends"]
@@ -644,8 +664,308 @@ transform = Transform3D(-0.926732, 0, -0.375723, 0, 1, 0, 0.375723, 0, -0.926732
 [node name="treePineSnowed4" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
 transform = Transform3D(-0.926732, 0, -0.375723, 0, 1, 0, 0.375723, 0, -0.926732, 13.0591, 0.399581, -11.9543)
 
+[node name="treePine10" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 31.2763, 0.399579, -22.2658)
+
+[node name="treePineSnowed10" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 34.7595, 0.399579, -19.4157)
+
+[node name="treePineSnowRound11" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 31.2055, 0.399578, -17.9235)
+
+[node name="treePine11" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 40.1167, 0.399579, -18.214)
+
+[node name="treePineSnowed11" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 39.7399, 0.399579, -13.7293)
+
+[node name="treePineSnowRound12" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 36.4976, 0.399578, -15.8136)
+
+[node name="treePine12" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 40.3157, 0.399579, -22.446)
+
+[node name="treePineSnowed12" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 36.0169, 0.399579, -23.7785)
+
+[node name="treePine13" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 9.16577, 0.399579, -26.0875)
+
+[node name="treePineSnowed13" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 12.6489, 0.399579, -23.2375)
+
+[node name="treePineSnowRound13" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 9.09492, 0.399578, -21.7453)
+
+[node name="treePine14" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 18.0061, 0.399579, -22.0358)
+
+[node name="treePineSnowed14" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 17.6293, 0.399579, -17.551)
+
+[node name="treePineSnowRound14" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 14.387, 0.399578, -19.6354)
+
+[node name="treePine15" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 18.2051, 0.399579, -26.2678)
+
+[node name="treePineSnowed20" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 9.11217, 0.399579, -32.8764)
+
+[node name="treePineSnowRound20" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 5.5582, 0.399578, -31.3842)
+
+[node name="treePineSnowRound21" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 10.8503, 0.399578, -29.2743)
+
+[node name="treePine20" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 12.8394, 0.399579, -32.8058)
+
+[node name="treePine21" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 20.8205, 0.399579, -28.3098)
+
+[node name="treePineSnowed15" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 13.9064, 0.399579, -27.6003)
+
+[node name="treePine22" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 15.9596, 0.399579, -30.6517)
+
+[node name="treePineSnowed21" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 15.906, 0.399579, -37.4406)
+
+[node name="treePineSnowRound22" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 12.352, 0.399578, -35.9484)
+
+[node name="treePineSnowRound23" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 17.6441, 0.399578, -33.8385)
+
+[node name="treePine23" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 19.6332, 0.399579, -37.37)
+
+[node name="treePineSnowRound33" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.94971, 0, -0.313131, 0, 1, 0, 0.313131, 0, -0.94971, 7.4619, 0.399578, -54.3311)
+
+[node name="treePine32" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.101542, 0, 0.994831, 0, 1, 0, -0.994831, 0, -0.101542, 11.3975, 0.399579, -53.3618)
+
+[node name="treePineSnowed28" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.101542, 0, 0.994831, 0, 1, 0, -0.994831, 0, -0.101542, 6.66872, 0.399579, -50.938)
+
+[node name="treePine34" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.279678, 0, -0.960094, 0, 1, 0, 0.960094, 0, -0.279678, 10.159, 0.399579, -49.7783)
+
+[node name="treePineSnowed29" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.279678, 0, -0.960094, 0, 1, 0, 0.960094, 0, -0.279678, 16.6848, 0.399579, -51.6503)
+
+[node name="treePineSnowRound34" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.279678, 0, -0.960094, 0, 1, 0, 0.960094, 0, -0.279678, 14.2943, 0.399578, -54.674)
+
+[node name="treePineSnowRound35" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.94971, 0, -0.313131, 0, 1, 0, 0.313131, 0, -0.94971, 13.6807, 0.399578, -49.01)
+
+[node name="treePine35" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.101542, 0, 0.994831, 0, 1, 0, -0.994831, 0, -0.101542, 17.6163, 0.399579, -48.0407)
+
+[node name="treePineSnowRound36" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.94971, 0, -0.313131, 0, 1, 0, 0.313131, 0, -0.94971, -6.62441, 0.399578, -59.1284)
+
+[node name="treePine33" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.101542, 0, 0.994831, 0, 1, 0, -0.994831, 0, -0.101542, -2.68885, 0.399579, -58.1591)
+
+[node name="treePineSnowed30" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.101542, 0, 0.994831, 0, 1, 0, -0.994831, 0, -0.101542, -7.41759, 0.399579, -55.7353)
+
+[node name="treePine36" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.279678, 0, -0.960094, 0, 1, 0, 0.960094, 0, -0.279678, -3.92736, 0.399579, -54.5756)
+
+[node name="treePineSnowed31" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.279678, 0, -0.960094, 0, 1, 0, 0.960094, 0, -0.279678, 2.59849, 0.399579, -56.4476)
+
+[node name="treePineSnowRound37" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.279678, 0, -0.960094, 0, 1, 0, 0.960094, 0, -0.279678, 0.207975, 0.399578, -59.4713)
+
+[node name="treePineSnowRound38" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.94971, 0, -0.313131, 0, 1, 0, 0.313131, 0, -0.94971, -0.405632, 0.399578, -53.8073)
+
+[node name="treePine37" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.101542, 0, 0.994831, 0, 1, 0, -0.994831, 0, -0.101542, 3.52993, 0.399579, -52.838)
+
+[node name="treePineSnowRound39" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.13926, 0, -0.990256, 0, 1, 0, 0.990256, 0, 0.13926, -22.2281, 0.399578, -24.8544)
+
+[node name="treePine38" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.997033, 0, 0.0769801, 0, 1, 0, -0.0769801, 0, -0.997033, -20.5744, 0.399579, -28.5549)
+
+[node name="treePineSnowed32" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.997033, 0, 0.0769801, 0, 1, 0, -0.0769801, 0, -0.997033, -19.0301, 0.399579, -23.4705)
+
+[node name="treePine39" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.895059, 0, -0.445948, 0, 1, 0, 0.445948, 0, 0.895059, -17.2682, 0.399579, -26.6989)
+
+[node name="treePineSnowed33" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.895059, 0, -0.445948, 0, 1, 0, 0.445948, 0, 0.895059, -17.95, 0.399579, -33.4536)
+
+[node name="treePineSnowRound40" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.895059, 0, -0.445948, 0, 1, 0, 0.445948, 0, 0.895059, -21.3506, 0.399578, -31.6389)
+
+[node name="treePineSnowRound41" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.13926, 0, -0.990256, 0, 1, 0, 0.990256, 0, 0.13926, -15.8859, 0.399578, -30.0279)
+
+[node name="treePine40" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.997033, 0, 0.0769801, 0, 1, 0, -0.0769801, 0, -0.997033, -14.2322, 0.399579, -33.7284)
+
+[node name="treePineSnowRound42" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.286926, 0, -0.957953, 0, 1, 0, 0.957953, 0, 0.286926, -20.7368, 0.399578, -11.2072)
+
+[node name="treePine41" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.997245, 0, -0.0741781, 0, 1, 0, 0.0741781, 0, -0.997245, -19.6598, 0.399579, -15.1147)
+
+[node name="treePineSnowed34" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.997245, 0, -0.0741781, 0, 1, 0, 0.0741781, 0, -0.997245, -17.3668, 0.399579, -10.3211)
+
+[node name="treePine42" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.952049, 0, -0.305945, 0, 1, 0, 0.305945, 0, 0.952049, -16.1116, 0.399579, -13.7782)
+
+[node name="treePineSnowed35" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.952049, 0, -0.305945, 0, 1, 0, 0.305945, 0, 0.952049, -17.8037, 0.399579, -20.353)
+
+[node name="treePineSnowRound43" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.952049, 0, -0.305945, 0, 1, 0, 0.305945, 0, 0.952049, -20.8919, 0.399578, -18.0464)
+
+[node name="treePineSnowRound44" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.286926, 0, -0.957953, 0, 1, 0, 0.957953, 0, 0.286926, -15.2469, 0.399578, -17.2775)
+
+[node name="treePine43" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.997245, 0, -0.0741781, 0, 1, 0, 0.0741781, 0, -0.997245, -14.1699, 0.399579, -21.1849)
+
+[node name="treePineSnowed22" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.985627, 0, 0.168937, 0, 1, 0, -0.168937, 0, -0.985627, 20.7002, 0.399579, -32.1645)
+
+[node name="treePineSnowed23" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.390972, 0, -0.920403, 0, 1, 0, 0.920403, 0, -0.390972, -9.46455, 0.399579, -32.8022)
+
+[node name="treePineSnowRound24" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.390972, 0, -0.920403, 0, 1, 0, 0.920403, 0, -0.390972, -11.4817, 0.399578, -36.0867)
+
+[node name="treePineSnowRound25" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.980015, 0, -0.198923, 0, 1, 0, 0.198923, 0, -0.980015, -12.7591, 0.399578, -30.5346)
+
+[node name="treePine24" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.390972, 0, -0.920403, 0, 1, 0, 0.920403, 0, -0.390972, -10.6179, 0.399579, -25.6954)
+
+[node name="treePineSnowed24" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.390972, 0, -0.920403, 0, 1, 0, 0.920403, 0, -0.390972, -3.91683, 0.399579, -26.7847)
+
+[node name="treePineSnowRound26" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.390972, 0, -0.920403, 0, 1, 0, 0.920403, 0, -0.390972, -5.934, 0.399578, -30.0692)
+
+[node name="treePineSnowRound27" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.980015, 0, -0.198923, 0, 1, 0, 0.198923, 0, -0.980015, -7.21141, 0.399578, -24.5171)
+
+[node name="treePine25" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.01651, 0, 0.999864, 0, 1, 0, -0.999864, 0, 0.01651, -3.41765, 0.399579, -23.0904)
+
+[node name="treePine26" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.102949, 0, -0.994687, 0, 1, 0, 0.994687, 0, 0.102949, -10.7869, 0.399579, -17.1684)
+
+[node name="treePineSnowRound28" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.761561, 0, -0.648093, 0, 1, 0, 0.648093, 0, -0.761561, -7.23536, 0.399578, -17.7846)
+
+[node name="treePine27" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.469133, 0, 0.883128, 0, 1, 0, -0.883128, 0, -0.469133, -3.22478, 0.399579, -18.3707)
+
+[node name="treePineSnowed25" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.01651, 0, 0.999864, 0, 1, 0, -0.999864, 0, 0.01651, -8.39927, 0.399579, -21.2413)
+
+[node name="treePine44" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.618299, 0, 0.785943, 0, 1, 0, -0.785943, 0, 0.618299, -11.6261, 0.399579, -22.8353)
+
+[node name="treePineSnowRound45" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.997912, 0, -0.0645846, 0, 1, 0, 0.0645846, 0, 0.997912, -14.6053, 0.399578, -24.8643)
+
+[node name="treePineSnowed36" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.2777, 0, -0.960668, 0, 1, 0, 0.960668, 0, -0.2777, -12.6013, 0.399579, -27.7149)
+
+[node name="treePine16" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.684611, 0, 0.728909, 0, 1, 0, -0.728909, 0, -0.684611, 39.1895, 0.399579, -27.0764)
+
+[node name="treePineSnowed16" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.684611, 0, 0.728909, 0, 1, 0, -0.728909, 0, -0.684611, 36.5627, 0.399579, -30.7308)
+
+[node name="treePineSnowRound15" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.684611, 0, 0.728909, 0, 1, 0, -0.728909, 0, -0.684611, 40.3817, 0.399578, -31.2523)
+
+[node name="treePine17" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.213133, 0, 0.977023, 0, 1, 0, -0.977023, 0, 0.213133, 31.699, 0.399579, -33.2781)
+
+[node name="treePineSnowed17" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.213133, 0, 0.977023, 0, 1, 0, -0.977023, 0, 0.213133, 33.2237, 0.399579, -37.5125)
+
+[node name="treePineSnowRound16" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.213133, 0, 0.977023, 0, 1, 0, -0.977023, 0, 0.213133, 35.8161, 0.399578, -34.66)
+
+[node name="treePine28" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.35695, 0, 0.934124, 0, 1, 0, -0.934124, 0, -0.35695, 29.5319, 0.399579, -37.9744)
+
+[node name="treePineSnowRound29" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.35695, 0, 0.934124, 0, 1, 0, -0.934124, 0, -0.35695, 32.2191, 0.399578, -41.3859)
+
+[node name="treePine29" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.708771, 0, -0.705439, 0, 1, 0, 0.705439, 0, 0.708771, 28.8293, 0.399579, -35.0028)
+
+[node name="treePineSnowRound30" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.708771, 0, -0.705439, 0, 1, 0, 0.705439, 0, 0.708771, 27.7784, 0.399578, -30.7891)
+
+[node name="treePine30" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.35695, 0, 0.934124, 0, 1, 0, -0.934124, 0, -0.35695, 28.4587, 0.39958, -44.3827)
+
+[node name="treePineSnowRound31" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.35695, 0, 0.934124, 0, 1, 0, -0.934124, 0, -0.35695, 31.692, 0.399579, -45.5678)
+
+[node name="treePine31" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.708771, 0, -0.705439, 0, 1, 0, 0.705439, 0, 0.708771, 27.7561, 0.39958, -41.4111)
+
+[node name="treePineSnowRound32" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.708771, 0, -0.705439, 0, 1, 0, 0.705439, 0, 0.708771, 26.7051, 0.399579, -37.1974)
+
+[node name="treePine18" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.908318, 0, -0.418279, 0, 1, 0, 0.418279, 0, 0.908318, 30.4115, 0.399579, -29.2418)
+
+[node name="treePineSnowed18" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.908318, 0, -0.418279, 0, 1, 0, 0.418279, 0, 0.908318, 34.2189, 0.399579, -26.8421)
+
+[node name="treePine19" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 27.4743, 0.399579, -20.562)
+
+[node name="treePineSnowRound17" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.849939, 0, -0.526882, 0, 1, 0, 0.526882, 0, 0.849939, 27.7428, 0.399578, -16.6771)
+
+[node name="treePineSnowed19" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.908318, 0, -0.418279, 0, 1, 0, 0.418279, 0, 0.908318, 30.7562, 0.399579, -25.5957)
+
+[node name="treePineSnowed26" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.908318, 0, -0.418279, 0, 1, 0, 0.418279, 0, 0.908318, 27.3202, 0.399579, -27.4309)
+
+[node name="treePineSnowed27" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(0.908318, 0, -0.418279, 0, 1, 0, 0.418279, 0, 0.908318, 27.9418, 0.399579, -24.0176)
+
 [node name="treePineSnowRound5" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
 transform = Transform3D(-0.926732, 0, -0.375723, 0, 1, 0, 0.375723, 0, -0.926732, 13.9498, 0.39958, -15.7045)
+
+[node name="treePineSnowRound18" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(0.0470019, 0, -0.998895, 0, 1, 0, 0.998895, 0, 0.0470019, 20.1302, 0.399578, -19.3286)
+
+[node name="treePineSnowRound19" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.926732, 0, -0.375723, 0, 1, 0, 0.375723, 0, -0.926732, 19.6931, 0.39958, -15.3978)
+
+[node name="treePine9" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
+transform = Transform3D(-0.591605, 0, -0.806228, 0, 1, 0, 0.806228, 0, -0.591605, 11.9546, 0.39958, -14.648)
+
+[node name="treePineSnowed9" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
+transform = Transform3D(-0.591605, 0, -0.806228, 0, 1, 0, 0.806228, 0, -0.591605, 9.2405, 0.399581, -11.6028)
+
+[node name="treePineSnowRound10" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
+transform = Transform3D(-0.591605, 0, -0.806228, 0, 1, 0, 0.806228, 0, -0.591605, 8.03024, 0.39958, -15.2624)
 
 [node name="treePine5" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("5_e13x7")]
 transform = Transform3D(-0.998835, 0, 0.0482571, 0, 1, 0, -0.0482571, 0, -0.998835, 37.1945, 0.39958, -9.58693)
@@ -660,7 +980,7 @@ transform = Transform3D(-0.998835, 0, 0.0482571, 0, 1, 0, -0.0482571, 0, -0.9988
 transform = Transform3D(-0.525813, 0, 0.8506, 0, 1, 0, -0.8506, 0, -0.525813, 27.2176, 0.39958, -9.43993)
 
 [node name="treePineSnowed6" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("6_1rth8")]
-transform = Transform3D(-0.525813, 0, 0.8506, 0, 1, 0, -0.8506, 0, -0.525813, 25.6519, 0.399581, -12.9441)
+transform = Transform3D(-0.525813, 0, 0.8506, 0, 1, 0, -0.8506, 0, -0.525813, 26.4794, 0.399581, -13.1334)
 
 [node name="treePineSnowRound7" parent="Environment_shit/NavigationRegion3D/trees" instance=ExtResource("7_0ix0e")]
 transform = Transform3D(-0.525813, 0, 0.8506, 0, 1, 0, -0.8506, 0, -0.525813, 29.4983, 0.39958, -12.6949)
