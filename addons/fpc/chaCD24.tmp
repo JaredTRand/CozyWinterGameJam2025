@@ -505,10 +505,10 @@ layout_mode = 2
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.95
-anchor_top = 0.925
-anchor_right = 1.0
-anchor_bottom = 0.95
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.9
 offset_left = -100.0
 offset_top = -100.0
 offset_right = -0.000488281
@@ -516,15 +516,13 @@ grow_horizontal = 0
 grow_vertical = 0
 pivot_offset = Vector2(45, 45)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="UserInterface/ff_container"]
-
-[node name="snowball_icon" type="TextureRect" parent="UserInterface/ff_container"]
+[node name="fishflakes" type="TextureRect" parent="UserInterface/ff_container"]
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("3_hq5rt")
 expand_mode = 2
 
-[node name="snowball_count" type="Label" parent="UserInterface/ff_container/snowball_icon"]
+[node name="flakecount" type="Label" parent="UserInterface/ff_container/fishflakes"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -538,7 +536,7 @@ size_flags_horizontal = 4
 text = "0"
 label_settings = SubResource("LabelSettings_74ug2")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface/ff_container/snowball_icon"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UserInterface/ff_container/fishflakes"]
 libraries = {
 "": SubResource("AnimationLibrary_jat2b")
 }

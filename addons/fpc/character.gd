@@ -96,10 +96,13 @@ var was_on_floor : bool = true # Was the player on the floor last frame (for lan
 @export var initital_snowballs:int = 4
 var current_snowball_count
 @onready var snowball_spawn:Node3D = $Head/snowball_spawn
+@onready var snowball_icon = $UserInterface/ff_container
+@onready var hotbar_sound:AudioStreamPlayer = $UserInterface/ff_container/AudioStreamPlayer
 
 
 #TIMERS
 @onready var cooldown_throw:Timer = $timers/cooldown_throw
+@onready var reload_timer:Timer = $timers/reload_timer
 
 # The reticle should always have a Control node as the root
 var RETICLE : Control
@@ -115,6 +118,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	current_snowball_count = initital_snowballs
+	set_snowballl_count(current_snowball_count)
 	
 	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
 	HEAD.rotation.y = rotation.y
@@ -220,12 +224,18 @@ func _physics_process(delta):
 func handle_action():
 	if Input.is_action_just_pressed("main_action") and cooldown_throw.is_stopped():
 		throw_snowball()
+	if Input.is_action_just_pressed("reload") and reload_timer.is_stopped():
+		reload_timer.start()
 
 func throw_snowball():
-	if current_snowball_count > 0:
+	if current_snowball_count <= 0:
+		snowball_icon.find_child("AnimationPlayer").play("moreflakes2")
+	else:
 		if snowball.can_instantiate():
 			cooldown_throw.start()
 			current_snowball_count -= 1
+			
+			set_snowballl_count(current_snowball_count)
 			
 			var newball:RigidBody3D = snowball.instantiate()
 			get_tree().root.add_child(newball)
@@ -233,6 +243,23 @@ func throw_snowball():
 			newball.global_rotation = snowball_spawn.global_rotation
 			newball.apply_impulse((-HEAD.get_global_transform().basis.z  * newball.speed) + velocity)
 
+func _on_reload_timer_timeout() -> void:
+	reload_snowball()
+
+func reload_snowball():
+	current_snowball_count += 1
+	set_snowballl_count(current_snowball_count)
+
+func set_snowballl_count(count):
+	if hotbar_sound:
+		hotbar_sound.stream = load("res://world/sounds/flake4shakes.wav")
+		if hotbar_sound.stream: hotbar_sound.play()
+
+	snowball_icon.find_child("snowball_count").text = str(current_snowball_count)
+
+	#if adding new snowball
+	if count > int(snowball_icon.find_child("snowball_count").text):
+		snowball_icon.find_child("AnimationPlayer").play("moreflakes2")
 
 func handle_jumping():
 	if jumping_enabled:

@@ -1,0 +1,177 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0xx0p7kdhbma"]
+
+[ext_resource type="Script" path="res://player/UI/debug.gd" id="1_el8vf"]
+[ext_resource type="Texture2D" uid="uid://mbqyr4ok4ggi" path="res://player/UI/hotbar/itemimages/snowball_icon.png" id="2_1mypi"]
+
+[sub_resource type="Theme" id="Theme_wdf0f"]
+MarginContainer/constants/margin_bottom = 10
+MarginContainer/constants/margin_left = 10
+MarginContainer/constants/margin_right = 10
+MarginContainer/constants/margin_top = 10
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2a0ov"]
+
+[sub_resource type="Animation" id="Animation_21miq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8qo0p"]
+resource_name = "moreflakes"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1062, 558), Vector2(1052, 558), Vector2(1062, 558), Vector2(1072, 558), Vector2(1062, 558), Vector2(1052, 558), Vector2(1062, 558), Vector2(1072, 558), Vector2(1062, 558), Vector2(1052, 558), Vector2(1062, 558)]
+}
+
+[sub_resource type="Animation" id="Animation_38oqs"]
+resource_name = "moreflakes2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.436332, 0.0, -0.436332, 0.0, 0.436332, 0.0, -0.436332, 0.0, 0.436332, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jat2b"]
+_data = {
+"RESET": SubResource("Animation_21miq"),
+"moreflakes": SubResource("Animation_8qo0p"),
+"moreflakes2": SubResource("Animation_38oqs")
+}
+
+[node name="UserInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." groups=["hotbar_sound"]]
+
+[node name="DebugPanel" type="PanelContainer" parent="." groups=["debug_panel"]]
+visible = false
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 453.0
+offset_bottom = 50.0
+theme = SubResource("Theme_wdf0f")
+script = ExtResource("1_el8vf")
+
+[node name="MarginContainer" type="MarginContainer" parent="DebugPanel"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DebugPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="HotBar" type="HBoxContainer" parent="." groups=["hotbar"]]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -374.0
+offset_top = -100.0
+offset_right = 374.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="hotbar_slot1" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot2" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot3" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot4" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot5" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot6" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot7" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="hotbar_slot8" type="TextureRect" parent="HotBar"]
+layout_mode = 2
+texture = SubResource("CompressedTexture2D_2a0ov")
+
+[node name="ff_container" type="HBoxContainer" parent="." groups=["ff_container"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -90.0
+offset_top = -90.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(45, 45)
+
+[node name="snowball_icon" type="TextureRect" parent="ff_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_1mypi")
+expand_mode = 2
+
+[node name="snowball_count" type="Label" parent="ff_container/snowball_icon"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -5.0
+offset_right = 5.0
+offset_bottom = 83.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "0"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ff_container/snowball_icon"]
+libraries = {
+"": SubResource("AnimationLibrary_jat2b")
+}
+movie_quit_on_finish = true
