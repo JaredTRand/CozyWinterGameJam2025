@@ -66,6 +66,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	if player_view_state == "DEAD": return
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Wandering POS", wander_pos)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Enemy POS", global_transform.origin)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Enemy State", player_view_state)
@@ -73,8 +74,7 @@ func _physics_process(delta):
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("player_in_attack_zone", player_in_attack_zone)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("SPEED", cur_speed)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("last_player_pos", last_player_pos)
-
-	if player_view_state == "DEAD": return
+	
 
 	animate(delta)
 	

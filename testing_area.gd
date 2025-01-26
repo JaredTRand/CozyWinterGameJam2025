@@ -19,6 +19,7 @@ func _ready() -> void:
 
 func spawn_enemies(num):
 	if enemies_spawned >= enemy_count: return
+	print("spawned " + str(num))
 	for i in num:
 		# var spawn_pos = NavigationServer3D.region_get_random_point(navServer.get_rid(), 1, false)
 		if enemy.can_instantiate():
@@ -35,11 +36,15 @@ func spawn_enemies(num):
 func enemy_died():
 	enemies_killed += 1
 
-	if enemies_killed >= enemies_spawned:
+	if enemies_killed >= enemy_count:
 		you_won()
+	else:
+		spawn_enemies(1)
 
 func you_won():
-	pass
+	player.queue_free()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://endlevel.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:

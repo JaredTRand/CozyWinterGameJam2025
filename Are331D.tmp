@@ -456,8 +456,8 @@ points = PackedVector3Array(-1.26, 0.599957, -0.52, -1.25507, 0.52164, -0.52, -1
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_xf40i")
-enemy_count = 3
-enemies_at_a_time = 2
+enemy_count = 7
+enemies_at_a_time = 6
 enemy = ExtResource("9_dc0uw")
 
 [node name="Environment_shit" type="Node3D" parent="."]

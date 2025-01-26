@@ -1,9 +1,10 @@
-[gd_scene load_steps=41 format=4 uid="uid://8ymof81pahf2"]
+[gd_scene load_steps=42 format=4 uid="uid://8ymof81pahf2"]
 
 [ext_resource type="Texture2D" uid="uid://co7m6tmlkb71m" path="res://level_assets/texture/snow01.png" id="4_8bpgt"]
 [ext_resource type="PackedScene" uid="uid://byobqjaax8sgn" path="res://level_assets/snowball_stack.tscn" id="5_s7u7f"]
 [ext_resource type="PackedScene" uid="uid://bej2py0uwqgiw" path="res://tree_pine_2.tscn" id="6_p15w1"]
 [ext_resource type="Script" path="res://button_retsart.gd" id="7_8hdes"]
+[ext_resource type="AudioStream" uid="uid://dhepy68asbk6q" path="res://player/winterwind.wav" id="7_ef84p"]
 [ext_resource type="PackedScene" uid="uid://epafkte5s1le" path="res://tree_pine_snowed_2.tscn" id="7_o2unk"]
 [ext_resource type="PackedScene" uid="uid://j2pde38nhylo" path="res://tree_pine_snow_round_3.tscn" id="8_61r31"]
 [ext_resource type="PackedScene" uid="uid://c3dg7goarkvqy" path="res://border_trees.tscn" id="9_81d8k"]
@@ -919,6 +920,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -50.29
 
 [node name="border_trees3" parent="Environment_shit/NavigationRegion3D/bordertrees" instance=ExtResource("9_81d8k")]
 transform = Transform3D(0.729709, 0, -0.683758, 0, 1, 0, 0.683758, 0, 0.729709, -44.0449, 9.53674e-07, 35.7057)
+
+[node name="wind" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ef84p")
+volume_db = -15.0
+autoplay = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.480781, 0.0859905, 0.872614, -0.0171805, 0.994065, -0.107425, -0.876672, -0.0666396, -0.47645, -10.2273, 2.57629, 21.8076)
