@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://da03cjd4s354q"]
+[gd_scene load_steps=47 format=4 uid="uid://da03cjd4s354q"]
 
 [ext_resource type="Script" path="res://level_assets/interaction.gd" id="1_pb3tu"]
 [ext_resource type="AudioStream" uid="uid://p5itxugvfyr6" path="res://level_assets/dooropen.wav" id="2_qn6cn"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cpkytieo0wvwe" path="res://level_assets/doorclose.wav" id="3_oc6wg"]
 [ext_resource type="PackedScene" uid="uid://bbgu45kvgg6e6" path="res://cabin_floor_2.tscn" id="3_udry8"]
 [ext_resource type="PackedScene" uid="uid://de207cnag88by" path="res://cabin_window_2.tscn" id="3_wo8kb"]
+[ext_resource type="Script" path="res://level_assets/warmhouse.gd" id="4_8e1h6"]
 [ext_resource type="PackedScene" uid="uid://d1dtvrx7rr7vq" path="res://cabin_wall_2.tscn" id="5_vwu0o"]
 [ext_resource type="PackedScene" uid="uid://b1o2o78p652ap" path="res://cabin_roof_2.tscn" id="7_sjqi7"]
 [ext_resource type="PackedScene" uid="uid://c62ry1faxwhv6" path="res://cabin_side_2.tscn" id="8_534fw"]
@@ -166,6 +167,9 @@ _data = {
 "RESET": SubResource("Animation_hylq2"),
 "open": SubResource("Animation_eleks")
 }
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_066sr"]
+size = Vector3(7.473, 3.569, 11.425)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ws1c8"]
 resource_name = "woodDark"
@@ -603,6 +607,14 @@ libraries = {
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="cabinDoor2/StaticBody3D"]
 volume_db = -10.0
 
+[node name="Area3D" type="Area3D" parent="cabinDoor2/StaticBody3D/AudioStreamPlayer3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9911, 1.84933, 3.28114)
+script = ExtResource("4_8e1h6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cabinDoor2/StaticBody3D/AudioStreamPlayer3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0392151, 0.0746155, 2.73697)
+shape = SubResource("BoxShape3D_066sr")
+
 [node name="StaticBody3D2" type="StaticBody3D" parent="cabinDoor2"]
 
 [node name="cabinDoor" type="MeshInstance3D" parent="cabinDoor2/StaticBody3D2"]
@@ -769,3 +781,6 @@ size = Vector3(0.747324, 7.99344, 10.0687)
 [node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.178241, 3.84499, 0.301829)
 size = Vector3(0.950083, 7.84476, 9.66655)
+
+[connection signal="body_entered" from="cabinDoor2/StaticBody3D/AudioStreamPlayer3D/Area3D" to="cabinDoor2/StaticBody3D/AudioStreamPlayer3D/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="cabinDoor2/StaticBody3D/AudioStreamPlayer3D/Area3D" to="cabinDoor2/StaticBody3D/AudioStreamPlayer3D/Area3D" method="_on_body_exited"]

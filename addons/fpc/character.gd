@@ -94,7 +94,8 @@ var was_on_floor : bool = true # Was the player on the floor last frame (for lan
 @export var snowball:PackedScene
 @export var max_snowballs:int = 8
 @export var initital_snowballs:int = 4
-@export var HEALTH = 250
+@export var init_HEALTH = 250
+var HEALTH
 
 var current_snowball_count
 @onready var snowball_spawn:Node3D = $Head/snowball_spawn
@@ -103,6 +104,8 @@ var current_snowball_count
 @onready var interactray:RayCast3D = $Head/interactray
 
 @onready var cold_aura:MeshInstance3D = $Head/cold
+@export var Death_Animation : AnimationPlayer
+var is_dead:bool = false
 
 #TIMERS
 @onready var cooldown_throw:Timer = $timers/cooldown_throw
@@ -124,6 +127,8 @@ func _ready():
 	
 	current_snowball_count = initital_snowballs
 	set_snowball_count(current_snowball_count)
+
+	HEALTH = init_HEALTH
 	
 	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
 	HEAD.rotation.y = rotation.y
@@ -189,8 +194,12 @@ func hide_inter_text():
 
 func take_hit(damage):
 	HEALTH -= damage
-	# if HEALTH <= 0:
-	# 	die()
+	if HEALTH <= 0:
+		die()
+func die():
+	Death_Animation.play("get_cold")
+	is_dead = true
+
 
 func _physics_process(delta):
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
@@ -205,7 +214,7 @@ func _physics_process(delta):
 	]
 	var readable_velocity : String = "X: " + str(vd[0]) + " Y: " + str(vd[1]) + " Z: " + str(vd[2])
 	$UserInterface/DebugPanel.add_property("Velocity", readable_velocity)
-	
+	if is_dead: return
 	# Gravity
 	#gravity = ProjectSettings.get_setting("physics/3d/default_gravity") # If the gravity changes during your game, uncomment this code
 	if not is_on_floor() and gravity and gravity_enabled:
@@ -256,6 +265,7 @@ func handle_action():
 			interation_timer.start()
 	
 func throw_snowball():
+	if is_dead: return
 	if current_snowball_count <= 0:
 		snowball_icon.find_child("AnimationPlayer").play("moreflakes2")
 	else:
@@ -451,6 +461,7 @@ func headbob_animation(moving):
 
 func _process(delta):
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS))
+	if is_dead: return
 	var status : String = state
 	if !is_on_floor():
 		status += " in the air"
@@ -462,8 +473,11 @@ func _process(delta):
 	else:
 		hide_inter_text()
 		
-	if HEALTH != 100:
-		var damage_indicator_int = ((10-1.5) * (HEALTH/100)) + 1.5
+
+	$UserInterface/DebugPanel.add_property("HEALTHHHHH", HEALTH)
+
+	if HEALTH != init_HEALTH:
+		var damage_indicator_int = ((10-1.5) * (HEALTH/init_HEALTH)) + 1.5
 		cold_aura.scale.x = lerp(cold_aura.scale.x, damage_indicator_int, delta*5)
 
 	if pausing_enabled:
