@@ -98,7 +98,7 @@ var current_snowball_count
 @onready var snowball_spawn:Node3D = $Head/snowball_spawn
 @onready var snowball_icon = $UserInterface/ff_container
 @onready var hotbar_sound:AudioStreamPlayer = $UserInterface/ff_container/AudioStreamPlayer
-
+@onready var interactray:RayCast3D = $Head/interactray
 
 #TIMERS
 @onready var cooldown_throw:Timer = $timers/cooldown_throw
@@ -428,6 +428,10 @@ func _process(delta):
 		status += " in the air"
 	$UserInterface/DebugPanel.add_property("State", status)
 	
+	var collider = interactray.get_collider()
+	if collider and collider.is_in_group("interactable") and collider.is_interactable:
+		RETICLE.update_text(collider.interact_type + " " + collider.interact_name)
+
 	if pausing_enabled:
 		if Input.is_action_just_pressed(PAUSE):
 			# You may want another node to handle pausing, because this player may get paused too.
@@ -438,7 +442,6 @@ func _process(delta):
 				Input.MOUSE_MODE_VISIBLE:
 					Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 					#get_tree().paused = false
-
 
 func _unhandled_input(event : InputEvent):
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:

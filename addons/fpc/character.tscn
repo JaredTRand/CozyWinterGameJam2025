@@ -479,6 +479,9 @@ speed_scale = 4.0
 [node name="snowball_spawn" type="Node3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.7)
 
+[node name="interactray" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -3)
+
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
