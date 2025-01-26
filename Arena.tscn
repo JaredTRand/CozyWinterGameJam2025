@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://co7m6tmlkb71m" path="res://level_assets/texture/snow01.png" id="1_5afx8"]
 [ext_resource type="PackedScene" uid="uid://cc1m2a1obsyn4" path="res://addons/fpc/character.tscn" id="1_aikiq"]
-[ext_resource type="PackedScene" uid="uid://b2kvqlj2exbvx" path="res://level_assets/Models/cabinDoor.glb" id="2_67y48"]
+[ext_resource type="PackedScene" uid="uid://da03cjd4s354q" path="res://level_assets/house.tscn" id="3_jy0d5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_13ipq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -122,5 +122,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594702, 0)
 base_speed = 5.0
 sprint_speed = 10.0
 
-[node name="cabinDoor2" parent="." instance=ExtResource("2_67y48")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0431819, 0.507729, -1.44452)
+[node name="House" parent="." instance=ExtResource("3_jy0d5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75049, 0.5, -4.27468)

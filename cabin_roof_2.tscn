@@ -1,0 +1,78 @@
+[gd_scene load_steps=6 format=4 uid="uid://b1o2o78p652ap"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bg2fx"]
+resource_name = "wood"
+albedo_color = Color(0.921864, 0.728862, 0.567897, 1)
+metallic = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mnc6q"]
+resource_name = "snow"
+albedo_color = Color(0.910248, 0.996544, 0.996544, 1)
+metallic = 1.0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_fcqit"]
+_surfaces = [{
+"aabb": AABB(-2.2808, -0.532472, -2.82164, 4.5616, 3.82368, 4.82164),
+"format": 34896613377,
+"index_count": 168,
+"index_data": PackedByteArray("AgAAAAEAAQAAAAMAAwAEAAEAAAAFAAMABQAGAAMABgAHAAMABwAIAAMACAAJAAMACQAKAAMACgALAAMACwAMAAMADQAKAAkADgAJAAgADwAIAAcAEAAHAAYAEQAGAAUAEgAFAAAAFAATAAoACgANABQAFgAVAAgACAAPABYAGAAXAAkACQAOABgAGgAZAAYABgARABoAHQAbABwAHAAeAB0AHAAfAB4AHwAgAB4AIAAhAB4AHwAZACAAGQAaACAAHwAiABkAIgAjABkAHwAVACIAFQAWACIAHwAXABUAFwAYABUAHwATABcAEwAUABcAHwAkABMAHwAlACQAIQAgAAUABQASACEAJQAfAAMAAwAMACUAJAAlAAwADAALACQAIwAiAAcABwAQACMAHQAeAAAAAAACAB0AHwAcAAQABAADAB8AAQAEABwAHAAbAAEA"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 38,
+"vertex_data": PackedByteArray("//9U4f/fAAD///////8AAP//+Oj/3wAA//8AAGwGAAD//y3v//8AAP//qcL/vwAA///+o/+fAAD//1SF/38AAP//qWb/XwAA///+R/8/AAD//1Mp/x8AAP//TRIAAAAA//+pCgAAAAD///cw/x8AAP//ok//PwAA//9Nbv9fAAD///iM/38AAP//oqv/nwAA//9Nyv+/AAAAAFMp/x8AAAAA9zD/HwAAAACpZv9fAAAAAE1u/18AAAAA/kf/PwAAAACiT/8/AAAAAP6j/58AAAAAoqv/nwAAAAD/////AAAAAC3v//8AAAAA+Oj/3wAAAABU4f/fAAAAAAAAbAYAAAAAqcL/vwAAAABNyv+/AAAAAFSF/38AAAAA+Iz/fwAAAABNEgAAAAAAAKkKAAAAAA==")
+}, {
+"aabb": AABB(-2.2808, -0.259112, -2.82164, 4.5616, 3.55032, 4.82164),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoADgAMAA0ADQAPAA4AEgAQABEAEQATABIAFgAUABUAFQAXABYAGgAYABkAGQAbABoAHgAcAB0AHQAfAB4A"),
+"name": "snow",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AAD33v/fAAAAACvG/78AAP//997/3wAA//8rxv+/AAAAANM5/z8AAAAAByH/HwAA///TOf8/AAD//wch/x8AAAAA4nv/fwAAAAAVY/9fAAD//+J7/38AAP//FWP/XwAAAADpnP+fAAAAAByE/38AAP//6Zz/nwAA//8chP9/AAAAAMwY/x8AAAAAAAAAAAAA///MGP8fAAD//wAAAAAAAAAA2lr/XwAAAAAOQv8/AAD//9pa/18AAP//DkL/PwAAAAD/////AAAAADLn/98AAP///////wAA//8y5//fAAAAAPC9/78AAAAAJKX/nwAA///wvf+/AAD//ySl/58AAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ma0vk"]
+resource_name = "cabinRoof_Mesh cabinRoof"
+_surfaces = [{
+"aabb": AABB(-2.2808, -0.532472, -2.82164, 4.5616, 3.82368, 4.82164),
+"attribute_data": PackedByteArray("nEACF0UlZwWcQJ8SgfpemEUlDg/zW50oS3c4OqKS00v5rW5dUMkJb6fkpID//9yN//8/kqfkQXxQyaZq+a0LWaKScEdLd9U181s6JHbnpICIGKSAdudBfIgYQXx2525diBhuXXbnC1mIGAtZducJb4gYCW9256ZqiBimanbnODqIGDg6dufVNYgY1TW52mcFudoOD2K/nxJivwIXfQVemAuknSgLpDoks4g4OrOI1TVcbdNLXG1wRwVSbl0FUgtZrjYJb642pmpXG6SAVxtBfAAA3I0AAD+SduedKIgYnSh25zokiBg6JHbnY1WIGGNVduezTYgYs0125z+SiBg/knbn3I2IGNyNdufTS4gY00t253BHiBhwR3bnAheIGAIXduefEogYnxKIGAAAducAAIgY7eJ25+3iducOD4gYDg9252cFiBhnBQ=="),
+"format": 34896613399,
+"index_count": 168,
+"index_data": PackedByteArray("AgAAAAEAAQAAAAMAAwAEAAEAAAAFAAMABQAGAAMABgAHAAMABwAIAAMACAAJAAMACQAKAAMACgALAAMACwAMAAMADQAKAAkADgAJAAgADwAIAAcAEAAHAAYAEQAGAAUAEgAFAAAAFQATABQAFAAWABUAGQAXABgAGAAaABkAHQAbABwAHAAeAB0AIQAfACAAIAAiACEAJQAjACQAJAAmACUAJAAnACYAJwAoACYAKAApACYAJwAqACgAKgArACgAJwAsACoALAAtACoAJwAuACwALgAvACwAJwAwAC4AMAAxAC4AJwAyADAAMgAzADAAJwA0ADIAJwA1ADQAOAA2ADcANwA5ADgAPAA6ADsAOwA9ADwAQAA+AD8APwBBAEAARABCAEMAQwBFAEQASABGAEcARwBJAEgATABKAEsASwBNAEwAUABOAE8ATwBRAFAA"),
+"material": SubResource("StandardMaterial3D_bg2fx"),
+"name": "wood",
+"primitive": 3,
+"uv_scale": Vector4(55.5441, 65.5547, 0, 0),
+"vertex_count": 82,
+"vertex_data": PackedByteArray("//9U4f/f/7//////////v///+Oj/3/+///8AAGwG/7///y3v////v///qcL/v/+////+o/+f/7///1SF/3//v///qWb/X/+////+R/8//7///1Mp/x//v///TRIAAP+///+pCgAA/7////cw/x//v///ok//P/+///9Nbv9f/7////iM/3//v///oqv/n/+///9Nyv+//78AAFMp/x//////Uyn/H///AAD3MP8f//////cw/x///wAAqWb/X/////+pZv9f//8AAE1u/1//////TW7/X///AAD+R/8///////5H/z///wAAok//P/////+iT/8///8AAP6j/5///////qP/n///AACiq/+f/////6Kr/5///wAA//////+/AAAt7////78AAPjo/9//vwAAVOH/3/+/AAAAAGwG/78AAKnC/7//vwAATcr/v/+/AAD+o/+f/78AAKKr/5//vwAAVIX/f/+/AAD4jP9//78AAKlm/1//vwAATW7/X/+/AAD+R/8//78AAKJP/z//vwAAUyn/H/+/AAD3MP8f/78AAE0SAAD/vwAAqQoAAP+/AACpwv+//////6nC/7///wAATcr/v/////9Nyv+///8AAAAAbAb/////AABsBv//AACpCgAA/////6kKAAD//wAAqQoAAP////+pCgAA//8AAE0SAAD/////TRIAAP//AABUhf9//////1SF/3///wAA+Iz/f//////4jP9///8AAFTh/9//////VOH/3///AAD46P/f//////jo/9///wAALe///4Sl//8t7///hKUAAAAAbAaEpf//AABsBoSl//8t7///AIAAAC3v//8AgP///////wCAAAD/////AID/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3////9/////f////3/+//9/////f////3////9//v//f////3/+//9/////f////3/+//9/////f/7//3////9/////f////3////9//v//f////3////9/////f///QKD//0Cg//9AoP//QKD///9/////f////3////9/////f////3////9/////f////3////9/////f////3///wAA/38AAP9/AAD/fwAA/3//f////3////9/////f///")
+}, {
+"aabb": AABB(-2.2808, -0.259112, -2.82164, 4.5616, 3.55032, 4.82164),
+"attribute_data": PackedByteArray("//9oHf//mDgAAGgdAACYOP//cLD//6HLAABwsAAAocv//6B1///RkAAAoHUAANGQ//84WP//aXMAADhYAABpc///2M3//wnpAADYzQAACen//wiT//85rgAACJMAADmu//8AAP//MBsAAAAAAAAwG///0Dr//wBWAADQOgAAAFY="),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABQAHAAYACgAIAAkACQALAAoADgAMAA0ADQAPAA4AEgAQABEAEQATABIAFgAUABUAFQAXABYAGgAYABkAGQAbABoAHgAcAB0AHQAfAB4A"),
+"material": SubResource("StandardMaterial3D_mnc6q"),
+"name": "snow",
+"primitive": 3,
+"uv_scale": Vector4(44.8976, 64.3046, 0, 0),
+"vertex_count": 32,
+"vertex_data": PackedByteArray("AAD33v/f//8AACvG/7//////997/3/////8rxv+///8AANM5/z///wAAByH/H//////TOf8//////wch/x///wAA4nv/f///AAAVY/9f/////+J7/3//////FWP/X///AADpnP+f//8AAByE/3//////6Zz/n/////8chP9///8AAMwY/x///wAAAAAAAP/////MGP8f/////wAAAAD//wAA2lr/X///AAAOQv8//////9pa/1//////DkL/P///AAD///////8AADLn/9////////////////8y5//f//8AAPC9/7///wAAJKX/n//////wvf+//////ySl/5////9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ/3/40P9/+ND/f/jQ")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_fcqit")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_xy5xk"]
+points = PackedVector3Array(2.2808, 3.2912, 2, 2.2808, 3.03969, 2, 2.2808, 2.94724, 1.39682, -2.2808, 3.2912, 2, -2.2808, 3.03969, 2, 2.2808, -0.532472, -2.70082, -2.2808, 2.94724, 1.39682, 2.2808, 0.198877, -2.21941, -2.2808, -0.532472, -2.70082, 2.2808, -0.373402, -2.82164, -2.2808, 0.198877, -2.21941, 2.2808, -0.259245, -2.82164, -2.2808, -0.373402, -2.82164, -2.2808, -0.259245, -2.82164)
+
+[node name="cabinRoof2" type="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 3.9, -10.5)
+
+[node name="cabinRoof" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_ma0vk")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_xy5xk")
