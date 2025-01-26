@@ -94,11 +94,15 @@ var was_on_floor : bool = true # Was the player on the floor last frame (for lan
 @export var snowball:PackedScene
 @export var max_snowballs:int = 8
 @export var initital_snowballs:int = 4
+@export var HEALTH = 250
+
 var current_snowball_count
 @onready var snowball_spawn:Node3D = $Head/snowball_spawn
 @onready var snowball_icon = $UserInterface/ff_container
 @onready var hotbar_sound:AudioStreamPlayer = $UserInterface/ff_container/AudioStreamPlayer
 @onready var interactray:RayCast3D = $Head/interactray
+
+@onready var cold_aura:MeshInstance3D = $Head/cold
 
 #TIMERS
 @onready var cooldown_throw:Timer = $timers/cooldown_throw
@@ -182,6 +186,11 @@ func hide_inter_text():
 	if intertext:
 		intertext.text = ""
 		intertext.visible = false
+
+func take_hit(damage):
+	HEALTH -= damage
+	# if HEALTH <= 0:
+	# 	die()
 
 func _physics_process(delta):
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
@@ -449,10 +458,13 @@ func _process(delta):
 	
 	var collider = interactray.get_collider()
 	if collider and collider.is_in_group("interactable") and collider.is_active and interation_timer.is_stopped():
-		change_inter_text(collider.interaction_type + " " + collider.interaction_name)
+		change_inter_text(collider.interaction_type + " " + collider.interaction_name + " (E)")
 	else:
 		hide_inter_text()
 		
+	if HEALTH != 100:
+		var damage_indicator_int = ((10-1.5) * (HEALTH/100)) + 1.5
+		cold_aura.scale.x = lerp(cold_aura.scale.x, damage_indicator_int, delta*5)
 
 	if pausing_enabled:
 		if Input.is_action_just_pressed(PAUSE):

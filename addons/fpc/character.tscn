@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cc1m2a1obsyn4"]
+[gd_scene load_steps=38 format=3 uid="uid://cc1m2a1obsyn4"]
 
 [ext_resource type="Script" path="res://addons/fpc/character.gd" id="1_0t4e8"]
 [ext_resource type="PackedScene" uid="uid://cja0hhaaqvm75" path="res://player/snowball/snowball.tscn" id="2_ra5y3"]
@@ -150,6 +150,86 @@ tracks/4/keys = {
 _data = {
 "RESET": SubResource("Animation_j8cx7"),
 "crouch": SubResource("Animation_5ec5e")
+}
+
+[sub_resource type="Gradient" id="Gradient_mdar6"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.127451, 0.436274, 0.960784)
+colors = PackedColorArray(0, 0, 0, 1, 0.654257, 0.768799, 1, 1, 0.341147, 0.532609, 1.05432, 1, 0.0460674, 0.283909, 0.99989, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xna78"]
+gradient = SubResource("Gradient_mdar6")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ex1dr"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+albedo_texture = SubResource("GradientTexture2D_xna78")
+
+[sub_resource type="QuadMesh" id="QuadMesh_w14u0"]
+material = SubResource("StandardMaterial3D_ex1dr")
+
+[sub_resource type="Animation" id="Animation_beskp"]
+resource_name = "get_cold"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.66667, 1.8),
+"transitions": PackedFloat32Array(2.4, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5708, 1.0472, 0), Vector3(1.434, 0.83497, -0.216899), Vector3(1.5708, 1.0472, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.66667, 1.8),
+"transitions": PackedFloat32Array(2.4, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gwv0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jm3vk"]
+_data = {
+"RESET": SubResource("Animation_gwv0a"),
+"get_cold": SubResource("Animation_beskp")
 }
 
 [sub_resource type="Animation" id="Animation_gh776"]
@@ -428,6 +508,7 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_k4wwl"]
 
 [node name="Character" type="CharacterBody3D" node_paths=PackedStringArray("HEAD", "CAMERA", "HEADBOB_ANIMATION", "JUMP_ANIMATION", "CROUCH_ANIMATION", "COLLISION_MESH") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_0t4e8")
 default_reticle = "res://addons/fpc/reticles/reticle_0_withtext.tscn"
 HEAD = NodePath("Head")
@@ -468,6 +549,15 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="Camera" type="Camera3D" parent="Head"]
+
+[node name="cold" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(10, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0, -0.162979)
+mesh = SubResource("QuadMesh_w14u0")
+
+[node name="DeathAnimation" type="AnimationPlayer" parent="Head"]
+libraries = {
+"": SubResource("AnimationLibrary_jm3vk")
+}
 
 [node name="HeadbobAnimation" type="AnimationPlayer" parent="Head"]
 libraries = {
