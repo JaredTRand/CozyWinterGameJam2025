@@ -18,14 +18,17 @@ sky = SubResource("Sky_ugwdp")
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
-fog_light_color = Color(0.618942, 0.651504, 0.702668, 1)
+fog_light_color = Color(0.678018, 0.707436, 0.753661, 1)
 fog_sun_scatter = 0.5
-fog_density = 0.02
 fog_sky_affect = 0.7
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.075
+volumetric_fog_emission = Color(0.29366, 0.29366, 0.29366, 1)
+volumetric_fog_length = 100.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3jv5g"]
 albedo_texture = ExtResource("1_5afx8")
-uv1_scale = Vector3(2, 2, 2)
+uv1_scale = Vector3(0.25, 0.25, 0.25)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -119,8 +122,8 @@ transform = Transform3D(1, 0, 0, 0, 0.653368, 0.757041, 0, -0.757041, 0.653368, 
 
 [node name="Character" parent="." instance=ExtResource("1_aikiq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.594702, 0)
-base_speed = 5.0
-sprint_speed = 10.0
+base_speed = 4.0
+sprint_speed = 8.0
 
 [node name="House" parent="." instance=ExtResource("3_jy0d5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75049, 0.5, -4.27468)
