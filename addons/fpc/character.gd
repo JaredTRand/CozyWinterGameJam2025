@@ -477,7 +477,8 @@ func _process(delta):
 	$UserInterface/DebugPanel.add_property("HEALTHHHHH", HEALTH)
 
 	if HEALTH != init_HEALTH:
-		var damage_indicator_int = ((10-1.5) * (HEALTH/init_HEALTH)) + 1.5
+		var perc:float = float(HEALTH)/float(init_HEALTH)
+		var damage_indicator_int:float = float(((10-1.5) * perc) + 1.5)
 		cold_aura.scale.x = lerp(cold_aura.scale.x, damage_indicator_int, delta*5)
 
 	if pausing_enabled:

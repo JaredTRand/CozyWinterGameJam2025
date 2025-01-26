@@ -7,7 +7,7 @@ extends StaticBody3D
 
 @export_group("Pickup")
 @export var pickup_able:bool = false
-@export var pickup_sound:AudioStreamWAV = load("res://world/sounds/pickupitem.wav")
+#@export var pickup_sound:AudioStreamWAV = load("res://world/sounds/pickupitem.wav")
 
 @export_group("Openable")
 @export var openable:bool = false

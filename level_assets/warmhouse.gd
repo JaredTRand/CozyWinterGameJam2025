@@ -9,7 +9,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if playerbody and playerbody.HEALTH < playerbody.init_HEALTH:
-		playerbody.HEALTH = lerp(float(playerbody.HEALTH), float(playerbody.init_HEALTH), delta/2)
+		playerbody.HEALTH = lerp(float(playerbody.HEALTH), float(playerbody.init_HEALTH), delta/8)
 
 
 func _on_body_entered(body: Node3D) -> void:
