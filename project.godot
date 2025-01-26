@@ -15,10 +15,6 @@ run/main_scene="res://Arena.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/mode=2
-
 [editor_plugins]
 
 enabled=PackedStringArray()
@@ -29,6 +25,10 @@ folder_colors={
 "res://enemy/": "red",
 "res://player/": "purple"
 }
+
+[global_group]
+
+interactable=""
 
 [input]
 

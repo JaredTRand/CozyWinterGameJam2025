@@ -103,6 +103,7 @@ var current_snowball_count
 #TIMERS
 @onready var cooldown_throw:Timer = $timers/cooldown_throw
 @onready var reload_timer:Timer = $timers/reload_timer
+@onready var interation_timer:Timer = $timers/interaction_timer
 
 # The reticle should always have a Control node as the root
 var RETICLE : Control
@@ -118,7 +119,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	current_snowball_count = initital_snowballs
-	set_snowballl_count(current_snowball_count)
+	set_snowball_count(current_snowball_count)
 	
 	# If the controller is rotated in a certain direction for game design purposes, redirect this rotation into the head.
 	HEAD.rotation.y = rotation.y
@@ -170,7 +171,17 @@ func change_reticle(reticle): # Yup, this function is kinda strange
 	RETICLE = load(reticle).instantiate()
 	RETICLE.character = self
 	$UserInterface.add_child(RETICLE)
-
+	
+func change_inter_text(text):
+	var intertext = RETICLE.find_child("text")
+	if intertext:
+		intertext.text = text
+		intertext.visible = true
+func hide_inter_text():
+	var intertext = RETICLE.find_child("text")
+	if intertext:
+		intertext.text = ""
+		intertext.visible = false
 
 func _physics_process(delta):
 	# Big thanks to github.com/LorenzoAncora for the concept of the improved debug values
@@ -229,7 +240,12 @@ func handle_action():
 		if hotbar_sound:
 			hotbar_sound.stream = load("res://player/sounds/snow_pack.wav")
 			if hotbar_sound.stream: hotbar_sound.play()
-
+	if Input.is_action_just_pressed("interact"):
+		var collider = interactray.get_collider()
+		if collider and collider.is_in_group("interactable") and collider.is_active and interation_timer.is_stopped():
+			collider.interact()
+			interation_timer.start()
+	
 func throw_snowball():
 	if current_snowball_count <= 0:
 		snowball_icon.find_child("AnimationPlayer").play("moreflakes2")
@@ -238,7 +254,7 @@ func throw_snowball():
 			cooldown_throw.start()
 			current_snowball_count -= 1
 			
-			set_snowballl_count(current_snowball_count)
+			set_snowball_count(current_snowball_count)
 			
 			var newball:RigidBody3D = snowball.instantiate()
 			get_tree().root.add_child(newball)
@@ -252,15 +268,19 @@ func _on_reload_timer_timeout() -> void:
 
 func reload_snowball():
 	current_snowball_count += 1
-	set_snowballl_count(current_snowball_count)
+	set_snowball_count(current_snowball_count)
 	
 
-func set_snowballl_count(count):
+func set_snowball_count(count):
 	#if adding new snowball
 	if count > int(snowball_icon.find_child("snowball_count").text):
 		snowball_icon.find_child("AnimationPlayer").play("moreflakes2")
-		
+	
+	if int(count) > max_snowballs:
+		count = str(max_snowballs)
+	current_snowball_count = int(count)
 	snowball_icon.find_child("snowball_count").text = str(current_snowball_count)
+	
 
 func handle_jumping():
 	if jumping_enabled:
@@ -420,7 +440,6 @@ func headbob_animation(moving):
 			HEADBOB_ANIMATION.speed_scale = 1
 			HEADBOB_ANIMATION.play("RESET", 1)
 
-
 func _process(delta):
 	$UserInterface/DebugPanel.add_property("FPS", Performance.get_monitor(Performance.TIME_FPS))
 	var status : String = state
@@ -429,8 +448,11 @@ func _process(delta):
 	$UserInterface/DebugPanel.add_property("State", status)
 	
 	var collider = interactray.get_collider()
-	if collider and collider.is_in_group("interactable") and collider.is_interactable:
-		RETICLE.update_text(collider.interact_type + " " + collider.interact_name)
+	if collider and collider.is_in_group("interactable") and collider.is_active and interation_timer.is_stopped():
+		change_inter_text(collider.interaction_type + " " + collider.interaction_name)
+	else:
+		hide_inter_text()
+		
 
 	if pausing_enabled:
 		if Input.is_action_just_pressed(PAUSE):

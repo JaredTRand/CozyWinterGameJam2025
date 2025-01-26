@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://byobqjaax8sgn"]
+
+[ext_resource type="Script" path="res://level_assets/interaction.gd" id="1_viqp3"]
+[ext_resource type="AudioStream" uid="uid://e0pgvlxfgvnf" path="res://player/snowball/snowstackgrab.wav" id="2_vguir"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_eo0bb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1gitb"]
+size = Vector3(0.93, 0.75, 0.93)
+
+[node name="Snowball_stack" type="StaticBody3D" groups=["interactable"]]
+script = ExtResource("1_viqp3")
+interaction_type = "Grab"
+interaction_name = "Snowballs"
+pickup_able = true
+pickup_sound = ExtResource("2_vguir")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0.3)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -0.3)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.3, 0, 0)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.3, 0, 0.3)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.3, 0, -0.3)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.3, 0, -0.3)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D14" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0.402907, 0)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D9" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.3, 0, 0.3)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D10" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.151091, 0.197963, 0.150651)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.148909, 0.197963, 0.150651)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D12" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.148909, 0.197963, -0.149349)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D13" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.151091, 0.197963, -0.149349)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.3, 0, 0)
+mesh = SubResource("SphereMesh_eo0bb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.217476, 0)
+shape = SubResource("BoxShape3D_1gitb")
