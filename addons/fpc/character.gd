@@ -503,3 +503,11 @@ func _unhandled_input(event : InputEvent):
 			# Where we're going, we don't need InputMap
 			if event.keycode == 4194338: # F7
 				$UserInterface/DebugPanel.visible = !$UserInterface/DebugPanel.visible
+
+
+func _on_death_animation_animation_finished(anim_name: StringName) -> void:
+	for i in get_tree().get_nodes_in_group("enemy"):
+		i.queue_free()
+	queue_free()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	get_tree().change_scene_to_file("res://deadlevel.tscn")

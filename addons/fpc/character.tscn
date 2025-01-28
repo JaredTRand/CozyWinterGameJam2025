@@ -596,6 +596,7 @@ grow_vertical = 2
 mouse_filter = 1
 
 [node name="DebugPanel" type="PanelContainer" parent="UserInterface"]
+visible = false
 layout_mode = 0
 offset_left = 10.0
 offset_top = 10.0
@@ -677,3 +678,4 @@ volume_db = -10.0
 autoplay = true
 
 [connection signal="timeout" from="timers/reload_timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="animation_finished" from="Head/DeathAnimation" to="." method="_on_death_animation_animation_finished"]

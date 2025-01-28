@@ -584,9 +584,6 @@ transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 
 [node name="Snowball_stack9" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -5.59725, 0.5, -8.16017)
 
-[node name="Snowball_stack10" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
-transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -25.7041, 0.5, 5.16605)
-
 [node name="Snowball_stack11" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -34.7474, 0.5, -10.8508)
 
@@ -614,14 +611,8 @@ transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 
 [node name="Snowball_stack18" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 38.1464, 0.5, 23.9094)
 
-[node name="Snowball_stack19" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
-transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, 21.1462, 0.5, 16.4399)
-
 [node name="Snowball_stack7" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
 transform = Transform3D(0.865964, 0, 0.500106, 0, 1, 0, -0.500106, 0, 0.865964, -12.2697, 0.500001, 25.4124)
-
-[node name="Snowball_stack8" parent="Environment_shit/NavigationRegion3D/odds and ends" instance=ExtResource("4_2dwmj")]
-transform = Transform3D(0.285003, 0, 0.958527, 0, 1, 0, -0.958527, 0, 0.285003, -14.6143, 0.500001, 21.0828)
 
 [node name="trees" type="Node3D" parent="Environment_shit/NavigationRegion3D"]
 

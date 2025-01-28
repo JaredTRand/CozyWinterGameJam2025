@@ -42,6 +42,8 @@ func enemy_died():
 		spawn_enemies(1)
 
 func you_won():
+	for i in get_tree().get_nodes_in_group("enemy"):
+		i.queue_free()
 	player.queue_free()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	get_tree().change_scene_to_file("res://endlevel.tscn")

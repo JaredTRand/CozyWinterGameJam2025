@@ -67,6 +67,7 @@ func _ready():
 
 func _physics_process(delta):
 	if player_view_state == "DEAD": return
+	if not PLAYER: return
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Wandering POS", wander_pos)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Enemy POS", global_transform.origin)
 	PLAYER.get_node("UserInterface/DebugPanel").add_property("Enemy State", player_view_state)
@@ -193,7 +194,7 @@ func move_to_player(delta):
 	var new_velocity = (next_loc - current_loc).normalized() * cur_speed
 
 	if not is_on_floor() and gravity:
-		new_velocity.y -= gravity*100 * delta
+		new_velocity.y -= gravity * delta
 	velocity = new_velocity
 
 	if not player_in_attack_zone:
@@ -210,7 +211,7 @@ func wander(delta):
 	var new_velocity = (next_loc - current_loc).normalized() * cur_speed
 
 	if not is_on_floor() and gravity:
-		new_velocity.y -= gravity*100 * delta
+		new_velocity.y -= gravity * delta
 	velocity = new_velocity
 	move_and_slide()
 
